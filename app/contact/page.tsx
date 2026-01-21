@@ -135,8 +135,8 @@ const ContactMe: React.FC = () => {
         <Image
           src="/globe-outline-dark-2.svg"
           alt=""
-          width={600}
-          height={600}
+          width={400}
+          height={400}
           className="opacity-80"
           priority
         />
