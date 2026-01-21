@@ -52,8 +52,7 @@ const ProjectsHomePage: React.FC = () => {
             className="
               inline-flex items-center gap-1
               text-sm font-medium
-              text-primary
-              hover:underline underline-offset-4
+              hover:text-primary
             "
           >
             See all projects
