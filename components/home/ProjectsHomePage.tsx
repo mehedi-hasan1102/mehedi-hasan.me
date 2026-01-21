@@ -46,7 +46,7 @@ const ProjectsHomePage: React.FC = () => {
         </div>
 
         {/* Footer link */}
-        <div className="pt-6">
+        <div className="py-6 text-center">
           <Link
             href="/projects"
             className="
