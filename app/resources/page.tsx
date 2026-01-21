@@ -18,15 +18,29 @@ const ResourcesPage: React.FC = () => {
   const data: ResourceCategory[] = resourcesJson.resources;
 
   return (
-    <section className="max-w-3xl mx-auto min-h-screen px-6 py-10 pt-20">
+    <section className="text-base-content font-geist max-w-3xl mx-auto pt-20 w-full  min-h-screen rounded-lg p-4 backdrop-blur-sm transition-shadow duration-300">
       {/* Header */}
-      <header className="mb-8">
+      {/* <header className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight">Resources</h1>
         <p className="text-base text-base-content/70 mt-2">
           A curated list of tools, libraries and learning materials that I
           frequently use.
         </p>
+
       </header>
+       */}
+
+
+<div className="my-4 text-start">
+          <h2 className="text-3xl">Resources</h2>
+          <h3 className="mt-4 text-sm sm:text-base text-base-content/80 leading-relaxed">
+             A curated list of tools, libraries and learning materials that I
+          frequently use.
+          </h3>
+        </div>
+
+
+
 
       {/* Resource Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

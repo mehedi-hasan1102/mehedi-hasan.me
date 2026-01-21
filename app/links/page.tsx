@@ -95,9 +95,14 @@ const LinksPage: React.FC = () => {
     <section className="text-base-content font-geist max-w-3xl mx-auto pt-20">
       <div className="w-full max-w-3xl mx-auto min-h-screen rounded-lg p-4 backdrop-blur-sm transition-shadow duration-300">
         {/* Header */}
-        <div className="my-4 text-start">
+       <div className="my-4 text-start">
           <h2 className="text-3xl">Links</h2>
+          <h3 className="mt-4 text-sm sm:text-base text-base-content/80 leading-relaxed">
+              Connect with me across my social profiles and community platforms.
+          </h3>
         </div>
+
+
 
         {/* Categories */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">

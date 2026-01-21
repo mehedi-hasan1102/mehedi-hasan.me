@@ -131,8 +131,11 @@ export default function DashboardPage() {
       <div className="w-full max-w-3xl mx-auto min-h-screen rounded-lg p-4 backdrop-blur-sm hover:shadow-primary/10 transition-shadow duration-300">
 
         {/* Header */}
-        <div className="my-4 text-start">
+         <div className="my-4 text-start">
           <h2 className="text-3xl">Dashboard</h2>
+          <h3 className="mt-4 text-sm sm:text-base text-base-content/80 leading-relaxed">
+              View my GitHub activity and recent contributions in one place.
+          </h3>
         </div>
 
         {/* Stats */}
