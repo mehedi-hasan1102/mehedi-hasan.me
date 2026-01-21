@@ -122,7 +122,7 @@ const ContactMe: React.FC = () => {
 
   return (
     <section
-      className="relative text-base-content font-geist max-w-3xl mx-auto pt-1"
+      className="relative text-base-content font-geist max-w-3xl mx-auto pt-20"
     >
       <Toaster position="top-right" reverseOrder={false} />
 

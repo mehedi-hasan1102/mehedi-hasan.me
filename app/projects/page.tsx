@@ -47,7 +47,7 @@ const AllProjectsPage: React.FC = () => {
 
   return (
     <>
-      <section className="text-base-content font-geist mx-auto pt-1 max-w-3xl">
+      <section className="text-base-content font-geist mx-auto pt-20 max-w-3xl">
         <div className="relative overflow-hidden rounded-lg p-4 backdrop-blur-sm transition-shadow duration-300">
           <div className="my-4 text-start">
             <h2 className="text-3xl">Projects</h2>

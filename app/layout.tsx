@@ -146,7 +146,7 @@ export default async function RootLayout({
             <Navbar blogs={allBlogsData} />
 
             {/* 🔹 Main Content */}
-            <main className="pt-[var(--navbar-height)]">
+            <main >
               {children}
             </main>
 

@@ -92,7 +92,7 @@ const socialCategories: SocialCategory[] = [
 /* ---------------- Links Page ---------------- */
 const LinksPage: React.FC = () => {
   return (
-    <section className="text-base-content font-geist max-w-3xl mx-auto pt-1">
+    <section className="text-base-content font-geist max-w-3xl mx-auto pt-20">
       <div className="w-full max-w-3xl mx-auto min-h-screen rounded-lg p-4 backdrop-blur-sm transition-shadow duration-300">
         {/* Header */}
         <div className="my-4 text-start">

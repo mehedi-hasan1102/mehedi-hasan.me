@@ -9,7 +9,7 @@ const GitHubAboutSection = dynamic(() => import("@/components/about/GitHub-about
 
 export default function AboutPage() {
   return (
-    <section className="text-base-content font-geist mx-auto pt-1 max-w-3xl min-h-screen space-y-6">
+    <section className="text-base-content font-geist mx-auto pt-20 max-w-3xl min-h-screen space-y-6">
       <div className="relative overflow-hidden rounded-lg p-4 backdrop-blur-sm">
 
         <div className="my-4">

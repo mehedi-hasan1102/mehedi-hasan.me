@@ -18,7 +18,7 @@ const signatureMaskStyle = {
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="font-geist w-full max-w-3xl mx-auto flex items-center justify-center pt-1">
+    <section className="font-geist w-full max-w-3xl mx-auto flex items-center justify-center pt-20">
       <div className="backdrop-blur-sm relative overflow-hidden grid grid-cols-1 md:grid-cols-2 items-center w-full rounded-lg p-4 gap-0 transition-shadow duration-300">
 
         {/* Left Section */}

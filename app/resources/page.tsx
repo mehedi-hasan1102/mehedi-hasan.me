@@ -18,7 +18,7 @@ const ResourcesPage: React.FC = () => {
   const data: ResourceCategory[] = resourcesJson.resources;
 
   return (
-    <section className="max-w-3xl mx-auto min-h-screen px-6 py-10">
+    <section className="max-w-3xl mx-auto min-h-screen px-6 py-10 pt-20">
       {/* Header */}
       <header className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight">Resources</h1>

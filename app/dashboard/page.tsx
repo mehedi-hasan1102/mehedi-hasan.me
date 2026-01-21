@@ -127,7 +127,7 @@ export default function DashboardPage() {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AF19FF", "#FF4560", "#FF9F40"];
 
   return (
-    <section className="text-base-content font-geist max-w-3xl mx-auto pt-1">
+    <section className="text-base-content font-geist max-w-3xl mx-auto pt-20">
       <div className="w-full max-w-3xl mx-auto min-h-screen rounded-lg p-4 backdrop-blur-sm hover:shadow-primary/10 transition-shadow duration-300">
 
         {/* Header */}

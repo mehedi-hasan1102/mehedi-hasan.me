@@ -59,7 +59,7 @@ export default function BlogPost({ blog }: Props) {
   }, [blog.fullContent]);
 
   return (
-    <div className="pt-1 max-w-3xl mx-auto">
+    <div className="pt-20 max-w-3xl mx-auto">
       <ScrollProgress />
 
       <div className="relative overflow-hidden rounded-lg p-4 backdrop-blur-sm transition-shadow duration-300 font-geist">
