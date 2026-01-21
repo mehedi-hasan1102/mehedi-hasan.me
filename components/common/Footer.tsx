@@ -21,6 +21,15 @@ interface NavLink {
 
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL!;
 
+/* ---------------- Helpers ---------------- */
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
 /* ---------------- Component ---------------- */
 
 const Footer = () => {
@@ -48,10 +57,8 @@ const Footer = () => {
 
   return (
     <footer className="mx-auto max-w-3xl backdrop-blur-xl mt-1 rounded-t-xl px-0 pt-0 pb-6 text-sm text-base-content">
-      {/* Divider */}
-      {/* <div className="h-px bg-primary/30 w-full mb-10" /> */}
-
-      {/* MOBILE */}
+      
+      {/* ---------------- MOBILE ---------------- */}
       <div className="space-y-12 md:hidden px-4">
         <div className="flex justify-between">
           {/* Main Pages */}
@@ -105,15 +112,25 @@ const Footer = () => {
             })}
           </div>
 
+          {/* Back to Top (Mobile) */}
+          <button
+            onClick={scrollToTop}
+            className="mt-6 inline-flex items-center gap-2
+                       rounded-md bg-base-200 px-4 py-2 text-xs
+                       text-base-content/80 shadow-sm
+                       transition hover:bg-base-300 hover:text-primary"
+            aria-label="Back to top"
+          >
+            ↑ Back to Top
+          </button>
+
           <p className="mt-4 text-xs text-base-content/40">
             © {new Date().getFullYear()} Mehedi Hasan
           </p>
-
-          <div className="mb-12"></div>
         </div>
       </div>
 
-      {/* DESKTOP */}
+      {/* ---------------- DESKTOP ---------------- */}
       <div className="hidden md:grid grid-cols-3 gap-12 px-4">
         {/* Brand */}
         <div className="flex flex-col gap-4">
@@ -172,6 +189,15 @@ const Footer = () => {
               {link.label}
             </Link>
           ))}
+
+          {/* Back to Top (Desktop) */}
+          <button
+            onClick={scrollToTop}
+            className="mt-4 w-fit text-xs text-base-content/60
+                       hover:text-primary transition flex items-center gap-1"
+          >
+            ↑ Back to Top
+          </button>
         </div>
       </div>
     </footer>
