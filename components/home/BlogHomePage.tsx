@@ -47,7 +47,7 @@ export default function BlogHomePage({ latestBlogs }: BlogHomePageProps) {
                 />
               </h3>
 
-              <p className="text-xs text-base-content/45 mt-1">
+              <p className="text-xs text-base-content/45 mt-4">
                 {blog.date} • {blog.readTime} • {blog.category}
               </p>
             </div>
@@ -78,12 +78,12 @@ export default function BlogHomePage({ latestBlogs }: BlogHomePageProps) {
       )}
 
       {/* Footer */}
-      <div className="pt-6">
+      <div className="pt-6 text-center">
         <Link
           href="/blog"
           className="
             inline-flex items-center gap-1 text-sm font-medium
-            text-primary hover:underline underline-offset-4
+            hover:text-primary 
           "
         >
           See all posts

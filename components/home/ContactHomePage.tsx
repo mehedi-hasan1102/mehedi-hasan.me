@@ -20,7 +20,7 @@ const ContactHomePage: React.FC = () => {
   return (
     <section
       id="hire-me"
-      className="max-w-3xl mx-auto px-4 pt-10 pb-12 text-base-content font-geist"
+      className="max-w-3xl mx-auto px-4 py-6 text-base-content font-geist"
     >
       {/* Header */}
       <div className="mb-3">

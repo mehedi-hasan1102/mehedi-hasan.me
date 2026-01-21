@@ -12,7 +12,7 @@ const GitHubActivitySection: React.FC = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.35 }}
       viewport={{ once: true }}
-      className="max-w-3xl mx-auto px-4 text-base-content font-geist"
+      className="max-w-3xl mx-auto px-4 text-base-content font-geist py-6"
     >
       {/* Header */}
       <motion.div
@@ -38,7 +38,7 @@ const GitHubActivitySection: React.FC = () => {
       </div>
 
       {/* Footer link */}
-      <div className="pt-4">
+      <div className="pt-6 text-center">
         <Link
           href="https://github.com/mehedi-hasan1102"
           target="_blank"
@@ -46,8 +46,8 @@ const GitHubActivitySection: React.FC = () => {
           className="
             inline-flex items-center gap-1
             text-sm font-medium
-            text-primary
-            hover:underline underline-offset-4
+            hover:text-primary
+            
           "
         >
           View GitHub profile
