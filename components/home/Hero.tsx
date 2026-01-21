@@ -34,12 +34,12 @@ const HeroSection: React.FC = () => {
               />
             </div>
 
-            <div className="flex justify-center mt-3 h-14">
+            {/* <div className="flex justify-center mt-3 h-14">
               <div
                 className="w-4/5 bg-primary"
                 style={signatureMaskStyle}
               />
-            </div>
+            </div> */}
           </div>
         </div>
 
