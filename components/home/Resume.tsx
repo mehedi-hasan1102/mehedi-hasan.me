@@ -118,7 +118,7 @@ const ResumeSections: React.FC = () => {
 
   return (
     <section className="max-w-3xl mx-auto px-4 text-base-content font-geist">
-      <div className="grid md:grid-cols-2 gap-12">
+      <div className="flex flex-col gap-6">
 
         {/* ================= Experience ================= */}
         <div>
