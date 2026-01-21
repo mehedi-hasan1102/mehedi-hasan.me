@@ -10,7 +10,7 @@ import { ReactNode } from "react";
 // ================================================
 import { ClientThemeProvider } from "@/components/common/ClientThemeProvider";
 import Footer from "@/components/common/Footer";
-import WhatsAppButton from "@/components/common/WhatsAppButton";
+// import WhatsAppButton from "@/components/common/WhatsAppButton";
 import ScrollToTopButton from "@/components/common/ScrollButton";
 import Navbar from "@/components/common/NavBar";
 // import Splash from '@/components/ui/Splash';
@@ -158,7 +158,7 @@ export default async function RootLayout({
               CLIENT WIDGETS
           ================================================ */}
           <ScrollToTopButton />
-          <WhatsAppButton />
+          {/* <WhatsAppButton /> */}
           {/* <AvailabilityBadge status="Full-time" /> */}
 
         </ClientThemeProvider>
