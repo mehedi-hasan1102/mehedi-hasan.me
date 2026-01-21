@@ -13,10 +13,10 @@ import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import ScrollToTopButton from "@/components/common/ScrollButton";
 import Navbar from "@/components/common/NavBar";
-import Splash from '@/components/ui/Splash';
+// import Splash from '@/components/ui/Splash';
 import { getSortedBlogsData } from "@/lib/blogs";
 import { Toaster } from "react-hot-toast";
-import AvailabilityBadge from "@/components/common/AvailabilityBadge";
+// import AvailabilityBadge from "@/components/common/AvailabilityBadge";
 
 // ================================================
 // METADATA (SEO / SOCIAL SHARING)
@@ -121,7 +121,7 @@ export default async function RootLayout({
         <ClientThemeProvider>
 
           {/* 🔹 Splash Screen */}
-          <Splash />
+          {/* <Splash /> */}
 
           {/* ================================================
               GLOBAL TOASTER
@@ -159,7 +159,7 @@ export default async function RootLayout({
           ================================================ */}
           <ScrollToTopButton />
           <WhatsAppButton />
-          <AvailabilityBadge status="Full-time" />
+          {/* <AvailabilityBadge status="Full-time" /> */}
 
         </ClientThemeProvider>
       </body>

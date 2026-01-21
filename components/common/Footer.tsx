@@ -49,7 +49,7 @@ const Footer = () => {
   return (
     <footer className="mx-auto max-w-3xl backdrop-blur-xl mt-1 rounded-t-xl px-0 pt-0 pb-6 text-sm text-base-content">
       {/* Divider */}
-      <div className="h-px bg-primary/30 w-full mb-10" />
+      {/* <div className="h-px bg-primary/30 w-full mb-10" /> */}
 
       {/* MOBILE */}
       <div className="space-y-12 md:hidden px-4">
