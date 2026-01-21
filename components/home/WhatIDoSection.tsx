@@ -41,7 +41,7 @@ const WhatIDoSection: React.FC = () => {
   return (
     <section
       id="what-i-do"
-      className="max-w-3xl mx-auto px-4 text-base-content font-geist"
+      className="max-w-3xl mx-auto px-4 text-base-content font-geist py-6"
     >
       {/* Header */}
       <div className="mb-5">
