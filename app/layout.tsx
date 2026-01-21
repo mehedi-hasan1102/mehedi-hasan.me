@@ -8,14 +8,12 @@ import { ReactNode } from "react";
 // ================================================
 // COMPONENT IMPORTS
 // ================================================
-// import Background from "@/components/ui/Background";
 import { ClientThemeProvider } from "@/components/common/ClientThemeProvider";
 import Footer from "@/components/common/Footer";
 import WhatsAppButton from "@/components/common/WhatsAppButton";
 import ScrollToTopButton from "@/components/common/ScrollButton";
 import Navbar from "@/components/common/NavBar";
 import Splash from '@/components/ui/Splash';
-// import CustomCursor from "@/components/common/CustomCursor";
 import { getSortedBlogsData } from "@/lib/blogs";
 import { Toaster } from "react-hot-toast";
 import AvailabilityBadge from "@/components/common/AvailabilityBadge";
@@ -121,15 +119,9 @@ export default async function RootLayout({
             CLIENT THEME PROVIDER
         ================================================ */}
         <ClientThemeProvider>
-          
+
           {/* 🔹 Splash Screen */}
           <Splash />
-
-          {/* 🔹 Background Canvas / Animation */}
-          {/* <Background /> */}
-
-          {/* 🔹 Optional Custom Cursor */}
-          {/* <CustomCursor /> */}
 
           {/* ================================================
               GLOBAL TOASTER
@@ -154,7 +146,9 @@ export default async function RootLayout({
             <Navbar blogs={allBlogsData} />
 
             {/* 🔹 Main Content */}
-            <main>{children}</main>
+            <main className="pt-[var(--navbar-height)]">
+              {children}
+            </main>
 
             {/* 🔹 Footer */}
             <Footer />

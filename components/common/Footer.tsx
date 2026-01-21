@@ -42,6 +42,7 @@ const Footer = () => {
   const resourcesPages: NavLink[] = [
     { label: "Links", href: "/links" },
     { label: "Dashboard", href: "/dashboard" },
+    { label: "Resources", href: "/resources" },
     { label: "Book a Meeting", href: CALENDLY_URL },
   ];
 
@@ -70,7 +71,7 @@ const Footer = () => {
           {/* Resources */}
           <div>
             <p className="mb-4 text-xs uppercase tracking-widest text-base-content/40">
-              Resources
+              Explore
             </p>
             <div className="flex flex-col gap-3 text-base-content/70">
               {resourcesPages.map((link) => (
@@ -160,7 +161,7 @@ const Footer = () => {
         {/* Resources */}
         <div className="flex flex-col gap-3 text-base-content/70">
           <p className="mb-4 text-xs uppercase tracking-widest text-base-content/40">
-            Resources
+            Explore
           </p>
           {resourcesPages.map((link) => (
             <Link
