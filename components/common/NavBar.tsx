@@ -126,12 +126,12 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
               onClick={() => setMenuOpen(false)}
             />
 
-            <aside className="fixed top-0 left-0 z-30 h-full w-[85%] max-w-sm bg-base-200 border-r border-base-content/10 shadow-xl flex flex-col">
+            <aside className="fixed top-0 left-0 z-30 h-full w-[75%] max-w-sm bg-base-200 border-r border-base-content/10 shadow-xl flex flex-col rounded-r-xl">
               <div className="flex items-center justify-between px-5 py-4 border-b border-base-content/10">
                 <Logo />
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="p-2 rounded-lg hover:bg-base-300/40 transition"
+                  className="p-2 rounded-lg hover:text-primary transition"
                 >
                   <FiX size={18} />
                 </button>

@@ -63,16 +63,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     >
       <div
         className="bg-base-200 border border-primary/30 rounded-br-none rounded-tr-none rounded-2xl shadow-2xl
-                   w-full max-h-[95vh] overflow-hidden flex flex-col relative max-w-2xl mx-auto
+                   w-full max-h-[90vh] overflow-hidden flex flex-col relative max-w-2xl mx-auto
                    transition-transform duration-200 ease-out"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={closeModal}
-          className="absolute top-2 right-4 z-30 rounded-lg p-2 sm:p-1 text-red-500 hover:bg-primary/20 transition-all"
+          className="absolute top-2 right-4 z-30 rounded-lg p-2 sm:p-1 hover:text-primary transition-all"
           aria-label="Close modal"
         >
-          <FiX size={14} />
+          <FiX size={18} />
         </button>
 
         <div className="flex-1 overflow-y-scroll modal-scrollbar p-6 md:p-8 space-y-6">
