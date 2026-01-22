@@ -26,7 +26,7 @@ const ContactHomePage: React.FC = () => {
       {/* Header */}
       <div className="mb-3">
         <h2 className="text-lg font-semibold tracking-tight">
-          Say hello
+          Say Hello
         </h2>
       </div>
 

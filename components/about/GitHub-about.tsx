@@ -2,20 +2,23 @@
 
 import React from 'react';
 
-
 const GitHubAboutSection: React.FC = () => {
   return (
-    <section className="text-base-content font-geist max-w-3xl mx-auto pt-1">
-      <div className="rounded-lg backdrop-blur-sm">
+    <section className="font-geist text-base-content max-w-3xl mx-auto pt-1">
+      <div className="rounded-lg   p-6 space-y-6">
+
         {/* Header */}
-        <div className="my-4 text-center">
-          <h2 className="text-xl text-start">
+        <div className="text-start">
+          <h2 className="text-xl font-semibold tracking-tight mb-3">
             GitHub Activity
           </h2>
+          <p className="text-sm text-base-content/70 mt-1">
+            A snapshot of my open-source contributions.
+          </p>
         </div>
 
         {/* Calendar Image */}
-        <div className="rounded-lg overflow-hidden p-4">
+        <div className="rounded-lg overflow-hidden  ">
           <img
             src="https://ghchart.rshah.org/mehedi-hasan1102"
             alt="Mehedi Hasan's GitHub Contribution Graph"
@@ -25,19 +28,21 @@ const GitHubAboutSection: React.FC = () => {
         </div>
 
         {/* Footer */}
-        <div className="my-4 px-4 text-start">
-          <p className="text-sm sm:text-base text-base-content/80 leading-relaxed">
-            <span>My coding journey, day by day, in open-source. Check out my </span>
+        <div className="text-start">
+          <p className="text-sm text-base-content/80 leading-relaxed">
+            My coding journey, day by day, in open-source. Check out my{" "}
             <a
               href="https://github.com/mehedi-hasan1102"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium hover:text-primary underline underline-offset-6 decoration-dashed transition-all duration-300"
+              className="font-medium hover:text-primary underline underline-offset-4 transition-colors"
             >
-              Github
-            </a>.
+              GitHub
+            </a>
+            .
           </p>
         </div>
+
       </div>
     </section>
   );

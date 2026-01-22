@@ -13,9 +13,12 @@ const GitHubActivitySection: React.FC = () => {
     >
       {/* Header */}
       <div className="mb-4 animate-fadeInUp">
-        <h2 className="text-lg font-semibold tracking-tight">
+        <h2 className="text-lg font-semibold tracking-tight mb-3">
           GitHub Activity
         </h2>
+         <p className="text-sm text-base-content/70 mt-1">
+            A snapshot of my open-source contributions.
+          </p>
       </div>
 
       {/* Contribution Graph */}
