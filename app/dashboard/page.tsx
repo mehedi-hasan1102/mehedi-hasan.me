@@ -147,15 +147,30 @@ export default function DashboardPage() {
       <div className="min-h-screen rounded-lg p-4 backdrop-blur-sm transition-shadow">
 
         {/* Header */}
-        <header className="mb-8">
-          <h2 className="text-3xl">Dashboard</h2>
-          <p className="mt-4 text-sm sm:text-base text-base-content/80">
-            A snapshot of my GitHub activity, repositories, and contributions.
-          </p>
-        </header>
+     <div className="m-4">
+  <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
+    Dashboard
+  </h1>
+
+  <p className="text-base mt-2 mb-0 text-base-content/75">
+    Explore my GitHub projects, contributions, and open-source work. This dashboard
+    highlights my recent repositories, activity, and ongoing experiments.
+    Feel free to star, fork, or connect with me on{" "}
+    <a
+      href="https://github.com/mehedi-hasan1102"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-medium hover:text-primary underline underline-offset-6 transition-colors"
+    >
+      GitHub
+    </a>
+    .
+  </p>
+</div>
+
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 mt-12 mx-4">
           {[
             { label: "Repositories", value: stats.repos },
             { label: "Stars", value: stats.stars },

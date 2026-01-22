@@ -220,18 +220,16 @@ const ContactMe: React.FC = () => {
 
         </div>
 
-      <div className="m-4 mt-6">
+<div className="m-4 mt-6">
   <p className="text-sm text-base-content/60 my-4">
-    Got a project idea or want to collaborate? What’s up — feel free to reach out on{" "}
+    Got a project idea or want to collaborate? What’s up — feel free to reach out via{" "}
     <a
-      href="https://www.linkedin.com/in/mehedi-hasan1102"
-      target="_blank"
-      rel="noopener noreferrer"
+      href="mailto:mehedi.hasan11023@gmail.com"
       className="font-medium hover:text-primary text-base-content/60 underline underline-offset-6"
     >
-      LinkedIn
+      Mail
     </a>{" "}
-    or send a message on {" "}
+    or send a message on{" "}
     <a
       href="https://wa.me/8801747874773"
       target="_blank"

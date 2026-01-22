@@ -56,15 +56,22 @@ const SnippetsPage: React.FC = () => {
     <section className="text-base-content font-geist max-w-3xl mx-auto pt-20 min-h-screen p-4 backdrop-blur-sm">
       
       {/* Header */}
-      <header className="mb-8 text-start">
-        <h2 className="text-3xl">Snippets</h2>
-        <p className="mt-4 text-sm sm:text-base text-base-content/80 leading-relaxed">
-          A collection of reusable code snippets, utilities, and small patterns I use in real projects.
-        </p>
-      </header>
+      <div className="m-4">
+  <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
+    Snippets
+  </h1>
+
+  <p className="text-base mt-2 mb-0 text-base-content/75">
+    A collection of reusable code snippets and small utilities that you can use
+    in your projects. These are shared publicly to help other developers and to
+    showcase common patterns I use in my work. Feel free to explore, copy, and
+    contribute.
+  </p>
+</div>
+
 
       {/* Snippets List */}
-      <div className="space-y-6">
+      <div className="space-y-6 mt-12 mx-4">
         {snippets.map((snippet, index) => (
           <article
             key={index}

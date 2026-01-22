@@ -98,15 +98,29 @@ const LinksPage: React.FC = () => {
     <section className="text-base-content font-geist max-w-3xl mx-auto pt-20">
       <div className="min-h-screen rounded-lg p-4 backdrop-blur-sm transition-shadow duration-300">
         {/* Header */}
-        <header className="mb-10">
-          <h2 className="text-3xl">Links</h2>
-          <p className="mt-4 text-sm sm:text-base text-base-content/80 leading-relaxed">
-            A curated list of places where you can find my work, writing, and online presence.
-          </p>
-        </header>
+<div className="m-4">
+  <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
+    Links
+  </h1>
+
+  <p className="text-base mt-2 mb-0 text-base-content/75">
+    Want to connect or collaborate? I’m always open to meaningful conversations,
+    projects, and opportunities. Reach out through any of the links below —
+    you can also follow me on{" "}
+    <a
+      href="https://x.com/mehedihasan1102"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-medium hover:text-primary underline underline-offset-6 transition-colors"
+    >
+      X
+    </a>
+    .
+  </p>
+</div>
 
         {/* Categories */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 mx-4 mt-12">
           {socialCategories.map((category) => (
             <div key={category.title}>
               <h3 className="mb-4 text-xs tracking-widest uppercase text-base-content/50">
