@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from "react";
-import { FiArrowUpRight } from "react-icons/fi";
 
 import {
   PieChart,
@@ -147,27 +146,26 @@ export default function DashboardPage() {
       <div className="min-h-screen rounded-lg p-4 backdrop-blur-sm transition-shadow">
 
         {/* Header */}
-     <div className="m-4">
-  <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
-    Dashboard
-  </h1>
+        <div className="m-4">
+          <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
+            Dashboard
+          </h1>
 
-  <p className="text-base mt-2 mb-0 text-base-content/75">
-    Explore my GitHub projects, contributions, and open-source work. This dashboard
-    highlights my recent repositories, activity, and ongoing experiments.
-    Feel free to star, fork, or connect with me on{" "}
-    <a
-      href="https://github.com/mehedi-hasan1102"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="font-medium hover:text-primary underline underline-offset-6 transition-colors"
-    >
-      GitHub
-    </a>
-    .
-  </p>
-</div>
-
+          <p className="text-base mt-2 mb-0 text-base-content/75">
+            Explore my GitHub projects, contributions, and open-source work. This dashboard
+            highlights my recent repositories, activity, and ongoing experiments.
+            Feel free to star, fork, or connect with me on{" "}
+            <a
+              href="https://github.com/mehedi-hasan1102"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium hover:text-primary underline underline-offset-6 transition-colors"
+            >
+              GitHub
+            </a>
+            .
+          </p>
+        </div>
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 mt-12 mx-4">
@@ -243,7 +241,7 @@ export default function DashboardPage() {
 
         {/* Latest Repos */}
         <section className="mb-10">
-          <h3 className="text-xl mb-4">Latest Repositories</h3>
+          <h3 className="text-xl mb-4 px-4">Latest Repositories</h3>
 
           <ul className="space-y-3">
             {repos.map((repo) => (
@@ -252,14 +250,13 @@ export default function DashboardPage() {
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-lg p-4 hover:bg-base-200 transition"
+                className="group block rounded-lg p-4 transition-colors "
               >
                 <div className="flex justify-between items-center">
-                  <span className="font-medium">{repo.name}</span>
-                  <FiArrowUpRight
-                    size={16}
-                    className="opacity-0 group-hover:opacity-100"
-                  />
+                  <div className="inline-flex items-center group-hover:underline underline-offset-4">
+                    <span className="font-medium">{repo.name}</span>
+                    <span className="ml-2">↗</span>
+                  </div>
                 </div>
 
                 <p className="text-sm text-base-content/80 mt-1 line-clamp-2">
@@ -278,7 +275,7 @@ export default function DashboardPage() {
 
         {/* Recent Commits */}
         <section>
-          <h3 className="text-xl mb-4">Recent Commits</h3>
+          <h3 className="text-xl mb-4 px-4">Recent Commits</h3>
 
           <ul className="space-y-3">
             {commits.map((commit, i) => (
@@ -287,7 +284,7 @@ export default function DashboardPage() {
                 href={commit.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-lg p-4 hover:bg-base-200 transition"
+                className="group block rounded-lg p-4 transition-colors "
               >
                 <div className="flex justify-between gap-3">
                   <div className="min-w-0">
@@ -295,18 +292,15 @@ export default function DashboardPage() {
                       <span className="text-base-content/60">
                         [{commit.repo}]
                       </span>{" "}
-                      {commit.message.split("\n")[0]}
+                      <span className="inline-flex items-center group-hover:underline underline-offset-4">
+                        {commit.message.split("\n")[0]} <span className="ml-2">↗</span>
+                      </span>
                     </p>
 
                     <p className="text-xs text-base-content/60 mt-1">
                       {new Date(commit.date).toLocaleString()}
                     </p>
                   </div>
-
-                  <FiArrowUpRight
-                    size={16}
-                    className="opacity-0 group-hover:opacity-100 mt-1"
-                  />
                 </div>
               </a>
             ))}
