@@ -41,7 +41,7 @@ export default function BlogHomePage({ latestBlogs }: BlogHomePageProps) {
                       src={blog.image}
                       alt={blog.title}
                       fill
-                      className="rounded-md object-cover"
+                      className="rounded-md object-cover" 
                     />
                   </div>
 
@@ -62,6 +62,13 @@ export default function BlogHomePage({ latestBlogs }: BlogHomePageProps) {
                     <p className="mt-1 text-xs text-base-content/45">
                       {blog.date} • {blog.readTime} • {blog.category}
                     </p>
+                    <p className="mt-2 text-sm text-base-content/80">
+  <p className="mt-2 text-sm text-base-content/80">
+  {blog.description?.slice(0, 50)}…
+</p>
+
+</p>
+
                   </div>
                 </Link>
               </li>
