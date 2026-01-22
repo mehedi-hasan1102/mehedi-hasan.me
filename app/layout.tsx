@@ -2,7 +2,7 @@
 // GLOBAL IMPORTS
 // ================================================
 import "./globals.css";
-import 'simplebar/dist/simplebar.min.css';
+import "simplebar/dist/simplebar.min.css";
 import { ReactNode } from "react";
 
 // ================================================
@@ -10,14 +10,9 @@ import { ReactNode } from "react";
 // ================================================
 import { ClientThemeProvider } from "@/components/common/ClientThemeProvider";
 import Footer from "@/components/common/Footer";
-// import WhatsAppButton from "@/components/common/WhatsAppButton";
-// 
-
 import Navbar from "@/components/common/NavBar";
-// import Splash from '@/components/ui/Splash';
 import { getSortedBlogsData } from "@/lib/blogs";
 import { Toaster } from "react-hot-toast";
-// import AvailabilityBadge from "@/components/common/AvailabilityBadge";
 
 // ================================================
 // METADATA (SEO / SOCIAL SHARING)
@@ -112,7 +107,6 @@ export const metadata = {
   },
 };
 
-
 // ================================================
 // ROOT LAYOUT (SERVER COMPONENT)
 // ================================================
@@ -121,12 +115,20 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  // 🔹 Fetch sorted blogs data
   const allBlogsData = await getSortedBlogsData();
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Preload self-hosted font */}
+        <link
+          rel="preload"
+          href="/fonts/geistmono-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
         {/* Structured data JSON-LD for SEO */}
         <script
           type="application/ld+json"
@@ -148,22 +150,13 @@ export default async function RootLayout({
             }),
           }}
         />
+
         {/* Canonical URL */}
-        <link rel="canonical" href="https://m-hasan.vercel.app" />
+        <link rel="canonical" href="https://www.mehedi-hasan.me" />
       </head>
 
       <body suppressHydrationWarning>
-        {/* ================================================
-            CLIENT THEME PROVIDER
-        ================================================ */}
         <ClientThemeProvider>
-
-          {/* 🔹 Splash Screen */}
-          {/* <Splash /> */}
-
-          {/* ================================================
-              GLOBAL TOASTER
-          ================================================ */}
           <Toaster
             position="top-right"
             reverseOrder={false}
@@ -176,29 +169,11 @@ export default async function RootLayout({
             }}
           />
 
-          {/* ================================================
-              PAGE LAYOUT WRAPPER
-          ================================================ */}
           <div className="px-2 lg:px-0">
-            {/* 🔹 Navbar */}
             <Navbar blogs={allBlogsData} />
-
-            {/* 🔹 Main Content */}
-            <main >
-              {children}
-            </main>
-
-            {/* 🔹 Footer */}
+            <main>{children}</main>
             <Footer />
           </div>
-
-          {/* ================================================
-              CLIENT WIDGETS
-          ================================================ */}
-          {/* <ScrollToTopButton /> */}
-          {/* <WhatsAppButton /> */}
-          {/* <AvailabilityBadge status="Full-time" /> */}
-
         </ClientThemeProvider>
       </body>
     </html>

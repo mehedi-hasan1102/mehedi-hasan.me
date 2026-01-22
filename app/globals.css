@@ -1,7 +1,6 @@
 /* =====================================================
    IMPORTS
 ===================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap');
 @import "tailwindcss";
 
 /* DaisyUI plugin with only selected themes */
@@ -24,6 +23,25 @@ body {
 html {
   scroll-behavior: smooth; /* full-page smooth scroll */
 }
+
+
+
+
+/* fonts  */
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/geistmono-latin.woff2") format("woff2");
+}
+
+body {
+  font-family: "Geist Mono", monospace;
+}
+
+
 
 
 /* =====================================================
