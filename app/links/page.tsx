@@ -2,7 +2,8 @@
 
 import React from "react";
 import { FiGlobe, FiMail, FiFileText } from "react-icons/fi";
-import { Github, Linkedin, Facebook, Instagram } from "lucide-react";
+import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
+
 import {
   FaDev,
   FaDiscord,
@@ -40,7 +41,7 @@ const socialCategories: SocialCategory[] = [
   {
     title: "Developer",
     links: [
-      { icon: Github, href: "https://github.com/mehedi-hasan1102", label: "GitHub" },
+      { icon: FaGithub, href: "https://github.com/mehedi-hasan1102", label: "GitHub" },
       { icon: FaDev, href: "https://dev.to/mehedihasan1102", label: "Dev.to" },
       { icon: FaHashnode, href: "https://hashnode.com/@mehedi-hasan1102", label: "Hashnode" },
       { icon: FaStackOverflow, href: "https://stackoverflow.com/users/31918992/mehedi-hasan", label: "Stack Overflow" },
@@ -51,7 +52,7 @@ const socialCategories: SocialCategory[] = [
   {
     title: "Professional",
     links: [
-      { icon: Linkedin, href: "https://www.linkedin.com/in/mehedi-hasan1102/", label: "LinkedIn" },
+      { icon: FaLinkedin, href: "https://www.linkedin.com/in/mehedi-hasan1102/", label: "LinkedIn" },
       { icon: SiPeerlist, href: "https://peerlist.io/mehedihasan", label: "Peerlist" },
       { icon: FiGlobe, href: "https://mehedi-h.vercel.app", label: "Portfolio" },
       { icon: FiFileText, href: "/Resume_of_Mehedi_Hasan.pdf", label: "Resume" },
@@ -71,8 +72,8 @@ const socialCategories: SocialCategory[] = [
   {
     title: "Social",
     links: [
-      { icon: Facebook, href: "https://facebook.com/mehedi.hasan1102", label: "Facebook" },
-      { icon: Instagram, href: "https://instagram.com/mehedi.hasan1102", label: "Instagram" },
+      { icon: FaFacebook, href: "https://facebook.com/mehedi.hasan1102", label: "Facebook" },
+      { icon: FaInstagram, href: "https://instagram.com/mehedi.hasan1102", label: "Instagram" },
       { icon: FaThreads, href: "https://www.threads.com/@mehedi.hasan1102", label: "Threads" },
       { icon: FaXTwitter, href: "https://x.com/mehedihasan1102", label: "Twitter / X" },
       { icon: SiBluesky, href: "https://bsky.app/profile/mehedihasan1102.bsky.social", label: "Bluesky" },
