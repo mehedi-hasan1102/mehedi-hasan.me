@@ -124,7 +124,7 @@ const Footer = () => {
           <button
             onClick={scrollToTop}
             className="inline-flex items-center gap-2 rounded-md bg-base-200 px-4 py-2
-                       text-xs text-base-content/80 transition hover:bg-base-300"
+                       text-xs text-base-content/80 transition hover:bg-base-300 "
           >
             ↑ Back to top
           </button>
@@ -203,7 +203,7 @@ const Footer = () => {
 
           <button
             onClick={scrollToTop}
-            className="mt-6 text-xs text-base-content/50 transition hover:text-primary"
+            className="mt-6 text-xs text-base-content/50 transition hover:text-primary cursor-pointer"
           >
             ↑ Back to top
           </button>

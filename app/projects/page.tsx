@@ -70,14 +70,14 @@ const AllProjectsPage: React.FC = () => {
   </div>
 
           {/* Filters */}
-          <div className="flex justify-center gap-4 my-4 flex-wrap">
+          <div className="flex justify-center gap-4 my-4 flex-wrap ">
             {(["All", "Frontend", "Backend", "Full Stack"] as FilterType[]).map(
               (type) => (
                
                 <button
   key={type}
   onClick={() => setFilter(type)}
-  className={`text-sm transition-all duration-200
+  className={`text-sm transition-all duration-200 cursor-pointer
     ${
       filter === type
         ? "text-primary underline underline-offset-6 decoration-2"

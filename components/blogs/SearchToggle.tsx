@@ -17,7 +17,7 @@ const SearchToggle: React.FC<SearchToggleProps> = ({ blogs }) => {
     <>
     <button
   onClick={() => setOpen(true)}
-  className="p-2 rounded-lg hover:rotate-12 hover:text-primary transition"
+  className="p-2 rounded-lg cursor-pointer hover:text-primary transition"
 >
   <FiSearch size={18} />
   <span className="sr-only">Search</span>

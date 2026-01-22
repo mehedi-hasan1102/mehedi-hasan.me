@@ -171,7 +171,7 @@ export default function ResumeSections() {
 
           {aboutData.experience.length > 3 && (
             <button
-              className="mt-6 mx-auto flex items-center gap-2 text-sm hover:text-primary transition-colors"
+              className="mt-6 cursor-pointer mx-auto flex items-center gap-2 text-sm hover:text-primary transition-colors"
               onClick={() => setShowAllExperience((p) => !p)}
             >
               {showAllExperience ? 'See less' : 'See more'}
@@ -200,7 +200,7 @@ export default function ResumeSections() {
 
           {aboutData.education.length > 3 && (
             <button
-              className="mt-6 mx-auto flex items-center gap-2 text-sm hover:text-primary transition-colors"
+              className="mt-6 cursor-pointer mx-auto flex items-center gap-2 text-sm hover:text-primary transition-colors"
               onClick={() => setShowAllEducation((p) => !p)}
             >
               {showAllEducation ? 'See less' : 'See more'}

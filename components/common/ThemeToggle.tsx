@@ -31,7 +31,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
   return (
     <button
       onClick={toggleTheme}
-      className={`p-2 rounded-lg hover:text-primary hover:rotate-12  transition ${className || ""}`}
+      className={`p-2 rounded-lg hover:text-primary  cursor-pointer transition ${className || ""}`}
       aria-label="Toggle Theme"
     >
       {mounted ? (theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />) : (

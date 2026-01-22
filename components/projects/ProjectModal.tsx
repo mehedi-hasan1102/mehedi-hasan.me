@@ -69,7 +69,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       >
         <button
           onClick={closeModal}
-          className="absolute top-2 right-4 z-30 rounded-lg p-2 sm:p-1  hover:text-primary transition-all"
+          className="absolute top-2 right-4 z-30 rounded-lg p-2 sm:p-1 cursor-pointer hover:text-primary transition-all"
           aria-label="Close modal"
         >
           <FiX size={18} />

@@ -63,8 +63,8 @@ const ContactHomePage: React.FC = () => {
           className="
             inline-flex items-center gap-1
             text-sm font-medium
-            text-primary
-            hover:underline underline-offset-4
+            hover:text-primary
+             cursor-pointer
           "
         >
           Send

@@ -3,17 +3,18 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import {
-  AiOutlineArrowRight,
+
   AiOutlinePhone,
   AiOutlineMail,
   AiOutlineEnvironment,
   AiOutlineCalendar,
-  AiOutlineCopy,
+
   AiOutlineCheckCircle,
   AiOutlineCloseCircle,
 } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
+import { FiArrowUpRight } from "react-icons/fi";
 
 /* ------------------ ENV ------------------ */
 
@@ -93,13 +94,12 @@ const ContactMe: React.FC = () => {
       value: (
         <button
           onClick={() => copyToClipboard(CONTACT_EMAIL)}
-          className="inline-flex items-center gap-2 text-sm
-                     underline-offset-6 decoration-dashed
-                     hover:underline hover:text-primary transition"
+          className="inline-flex items-center gap-2 text-sm hover:text-primary transition cursor-pointer"
         >
-          {CONTACT_EMAIL}
-          <AiOutlineCopy size={14} />
+          <span>{CONTACT_EMAIL}</span>
+          <span>⧉</span>
         </button>
+
       ),
     },
     {
@@ -116,11 +116,11 @@ const ContactMe: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-sm
-                     underline-offset-6 decoration-dashed
-                     hover:underline hover:text-primary transition"
+                     
+                     hover:text-primary transition"
         >
           Schedule on Calendly
-          <AiOutlineArrowRight size={14} />
+          <FiArrowUpRight size={14} />
         </a>
       ),
     },
@@ -146,23 +146,23 @@ const ContactMe: React.FC = () => {
 
         {/* Header */}
         <div className="m-4">
-  <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
-    Contact
-  </h1>
-  <p className="text-base mt-2 mb-0 text-base-content/75">
-    Have a question, idea, or opportunity in mind? I’m always open to meaningful
-    conversations, collaborations, and new projects. Feel free to reach out —
-    you can also connect with me on{" "}
-    <a
-      href="https://x.com/mehedihasan1102"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="font-medium hover:text-primary underline underline-offset-6 transition-colors"
-    >
-      X
-    </a>.
-  </p>
-</div>
+          <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
+            Contact
+          </h1>
+          <p className="text-base mt-2 mb-0 text-base-content/75">
+            Have a question, idea, or opportunity in mind? I’m always open to meaningful
+            conversations, collaborations, and new projects. Feel free to reach out —
+            you can also connect with me on{" "}
+            <a
+              href="https://x.com/mehedihasan1102"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium hover:text-primary underline underline-offset-6 transition-colors"
+            >
+              X
+            </a>.
+          </p>
+        </div>
 
 
         <div className="flex flex-col md:flex-row gap-8 px-4 mt-12">
@@ -190,11 +190,11 @@ const ContactMe: React.FC = () => {
               <button
                 type="submit"
                 className="inline-flex items-center gap-1 text-sm
-                           underline-offset-6 decoration-dashed
-                           hover:underline hover:text-primary transition"
+                           
+                           hover:text-primary transition cursor-pointer"
               >
                 Send Message
-                <AiOutlineArrowRight size={14} />
+                <FiArrowUpRight size={14} />
               </button>
             </form>
           </div>
@@ -220,27 +220,27 @@ const ContactMe: React.FC = () => {
 
         </div>
 
-<div className="m-4 mt-6">
-  <p className="text-sm text-base-content/60 my-4">
-    Got a project idea or want to collaborate? What’s up — feel free to reach out via{" "}
-    <a
-      href="mailto:mehedi.hasan11023@gmail.com"
-      className="font-medium hover:text-primary text-base-content/60 underline underline-offset-6"
-    >
-      Mail
-    </a>{" "}
-    or send a message on{" "}
-    <a
-      href="https://wa.me/8801747874773"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="font-medium hover:text-primary text-base-content/60 underline underline-offset-6"
-    >
-      WhatsApp
-    </a>
-    . I’m always open to new opportunities and conversations.
-  </p>
-</div>
+        <div className="m-4 mt-6">
+          <p className="text-sm text-base-content/60 my-4">
+            Got a project idea or want to collaborate? What’s up — feel free to reach out via{" "}
+            <a
+              href="mailto:mehedi.hasan11023@gmail.com"
+              className="font-medium hover:text-primary text-base-content/60 underline underline-offset-6"
+            >
+              Mail
+            </a>{" "}
+            or send a message on{" "}
+            <a
+              href="https://wa.me/8801747874773"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium hover:text-primary text-base-content/60 underline underline-offset-6"
+            >
+              WhatsApp
+            </a>
+            . I’m always open to new opportunities and conversations.
+          </p>
+        </div>
 
 
       </div>
