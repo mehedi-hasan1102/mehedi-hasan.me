@@ -68,20 +68,21 @@ const ListItem = React.memo(
       </p>
 
       {subtitle && (
-        <p className="text-sm text-base-content/80">
-          {subtitle}
-          {link && (
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 ml-1 text-base-content/70 hover:text-primary transition-colors"
-            >
-              <FiArrowUpRight size={13} />
-            </a>
-          )}
-        </p>
-      )}
+  <p className="text-sm text-base-content/80">
+    {subtitle}
+    {link && (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open link"
+        className="inline-flex items-center gap-1 ml-1 text-base-content/70 hover:text-primary transition-colors"
+      >
+        <FiArrowUpRight size={13} />
+      </a>
+    )}
+  </p>
+)}
 
       {meta && (
         <p className="text-xs text-base-content/50">

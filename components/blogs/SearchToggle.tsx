@@ -15,12 +15,14 @@ const SearchToggle: React.FC<SearchToggleProps> = ({ blogs }) => {
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        className="p-2 rounded-lg hover:hover:rotate-12 hover:text-primary transition"
-      >
-        <FiSearch size={18} />
-      </button>
+    <button
+  onClick={() => setOpen(true)}
+  className="p-2 rounded-lg hover:rotate-12 hover:text-primary transition"
+>
+  <FiSearch size={18} />
+  <span className="sr-only">Search</span>
+</button>
+
 
       {open && <SearchBar onClose={() => setOpen(false)} blogs={blogs} />}
     </>

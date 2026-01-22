@@ -97,19 +97,25 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
             </div>
           </div>
 
-          {/* Mobile Controls */}
-          <div className="flex items-center gap-0 md:hidden">
-            <SearchToggle blogs={blogs} />
-            <ThemeToggle />
-            {!menuOpen && (
-              <button
-                onClick={() => setMenuOpen(true)}
-                className="p-2 rounded-lg hover:bg-base-200/40 transition"
-              >
-                <FiMenu size={18} />
-              </button>
-            )}
-          </div>
+         
+         {/* Mobile Controls */}
+<div className="flex items-center gap-0 md:hidden">
+  <SearchToggle blogs={blogs} />
+
+  <ThemeToggle />
+
+  {!menuOpen && (
+    <button
+      onClick={() => setMenuOpen(true)}
+      aria-label="Open menu"
+      className="p-2 rounded-lg hover:bg-base-200/40 transition"
+    >
+      <FiMenu size={18} />
+    </button>
+  )}
+</div>
+
+
         </div>
 
         {/* Mobile Drawer */}
