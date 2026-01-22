@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from "react";
-import { Copy, Check } from "lucide-react";
+import { FiCopy, FiCheck } from "react-icons/fi";
 
 type Snippet = {
   title: string;
@@ -106,11 +106,11 @@ const SnippetsPage: React.FC = () => {
               >
                 {copiedIndex === index ? (
                   <>
-                    <Check size={14} /> Copied
+                    <FiCheck size={14} /> Copied
                   </>
                 ) : (
                   <>
-                    <Copy size={14} /> Copy
+                    <FiCopy size={14} /> Copy
                   </>
                 )}
               </button>
