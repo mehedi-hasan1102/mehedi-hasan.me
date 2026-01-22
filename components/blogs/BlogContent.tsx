@@ -80,7 +80,7 @@ export function BlogContent({ years, structured }: BlogContentProps) {
           No posts published yet.
         </p>
       ) : (
-        <div className="space-y-10">
+        <div className="space-y-10 mt-6">
           {sortedData.map(({ year, monthData, totalBlogs }) => (
             <div key={year}>
               {/* Year */}

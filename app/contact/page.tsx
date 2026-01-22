@@ -146,17 +146,26 @@ const ContactMe: React.FC = () => {
 
         {/* Header */}
         <div className="m-4">
-          <p className="text-sm mb-0">• Contact</p>
-          <h1 className="text-2xl md:text-3xl">
-            Let’s <span className="text-base-content/60">Connect</span>
-          </h1>
-          <p className="mt-4 max-w-xl text-sm sm:text-base text-base-content/80 leading-relaxed">
-            I’m currently open to full-time opportunities and meaningful collaborations.
-            If you’re hiring or want to discuss a project, feel free to reach out.
-          </p>
-        </div>
+  <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
+    Contact
+  </h1>
+  <p className="text-base mt-2 mb-0 text-base-content/75">
+    Have a question, idea, or opportunity in mind? I’m always open to meaningful
+    conversations, collaborations, and new projects. Feel free to reach out —
+    you can also connect with me on{" "}
+    <a
+      href="https://x.com/mehedihasan1102"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-medium hover:text-primary underline underline-offset-6 transition-colors"
+    >
+      X
+    </a>.
+  </p>
+</div>
 
-        <div className="flex flex-col md:flex-row gap-8 px-4">
+
+        <div className="flex flex-col md:flex-row gap-8 px-4 mt-12">
 
           {/* Form */}
           <div className="w-full md:w-1/2">
@@ -210,7 +219,35 @@ const ContactMe: React.FC = () => {
           </div>
 
         </div>
+
+      <div className="m-4 mt-6">
+  <p className="text-sm text-base-content/60 my-4">
+    Got a project idea or want to collaborate? What’s up — feel free to reach out on{" "}
+    <a
+      href="https://www.linkedin.com/in/mehedi-hasan1102"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-medium hover:text-primary text-base-content/60 underline underline-offset-6"
+    >
+      LinkedIn
+    </a>{" "}
+    or send a message on {" "}
+    <a
+      href="https://wa.me/8801747874773"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-medium hover:text-primary text-base-content/60 underline underline-offset-6"
+    >
+      WhatsApp
+    </a>
+    . I’m always open to new opportunities and conversations.
+  </p>
+</div>
+
+
       </div>
+
+
     </section>
   );
 };
