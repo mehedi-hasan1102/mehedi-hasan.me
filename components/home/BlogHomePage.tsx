@@ -62,12 +62,12 @@ export default function BlogHomePage({ latestBlogs }: BlogHomePageProps) {
                     <p className="mt-1 text-xs text-base-content/45">
                       {blog.date} • {blog.readTime} • {blog.category}
                     </p>
-                    <p className="mt-2 text-sm text-base-content/80">
+                    {/* Description */} 
   <p className="mt-2 text-sm text-base-content/80">
   {blog.description?.slice(0, 50)}…
 </p>
 
-</p>
+
 
                   </div>
                 </Link>
