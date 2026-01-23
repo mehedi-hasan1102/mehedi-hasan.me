@@ -91,7 +91,7 @@ export function BlogContent({ years, structured }: BlogContentProps) {
                 </span>
               </div>
 
-              <div className="h-px bg-primary/30 mb-6" />
+              <div className="h-px bg-base-content/10 mb-6" />
 
               {/* Months */}
               <div className="space-y-6">

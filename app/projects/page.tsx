@@ -91,7 +91,7 @@ const AllProjectsPage: React.FC = () => {
             )}
           </div>
 
-          <div className="h-px bg-primary/30 mb-4" />
+          <div className="h-px bg-base-content/10 mb-4" /> 
 
           {/* Projects */}
           <div className="space-y-2">
