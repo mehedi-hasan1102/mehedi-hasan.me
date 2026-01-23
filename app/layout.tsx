@@ -1,19 +1,16 @@
 // ================================================
-// GLOBAL IMPORTS
+// GLOBAL IMPORTS (SAFE)
 // ================================================
 import "./globals.css";
 import "simplebar/dist/simplebar.min.css";
 import { ReactNode } from "react";
 
 // ================================================
-// COMPONENT IMPORTS
+// SERVER COMPONENT IMPORTS
 // ================================================
-import { ClientThemeProvider } from "@/components/common/ClientThemeProvider";
 import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/NavBar";
 import { getSortedBlogsData } from "@/lib/blogs";
-import { Toaster } from "react-hot-toast";
-
 // ================================================
 // METADATA (SEO / SOCIAL SHARING)
 // ================================================
@@ -118,9 +115,9 @@ export default async function RootLayout({
   const allBlogsData = await getSortedBlogsData();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        {/* Preload self-hosted font */}
+        {/* Preload critical font */}
         <link
           rel="preload"
           href="/fonts/geistmono-latin.woff2"
@@ -129,7 +126,7 @@ export default async function RootLayout({
           crossOrigin="anonymous"
         />
 
-        {/* Structured data JSON-LD for SEO */}
+        {/* Structured data (SEO-safe) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -137,44 +134,27 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Mehedi Hasan",
-              url: "https://m-hasan.vercel.app",
+              url: "https://www.mehedi-hasan.me",
               sameAs: [
                 "https://www.linkedin.com/in/mehedi-hasan1102",
                 "https://github.com/mehedi-hasan1102",
               ],
               jobTitle: "Full-Stack Developer",
-              worksFor: {
-                "@type": "Organization",
-                name: "Self-employed",
-              },
             }),
           }}
         />
 
-        {/* Canonical URL */}
         <link rel="canonical" href="https://www.mehedi-hasan.me" />
       </head>
 
-      <body suppressHydrationWarning>
-        <ClientThemeProvider>
-          <Toaster
-            position="top-right"
-            reverseOrder={false}
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: "transparent",
-                boxShadow: "none",
-              },
-            }}
-          />
+      <body>
+        {/* SERVER NAVBAR (NO client JS pollution) */}
+        <Navbar blogs={allBlogsData} />
 
-          <div className="px-2 lg:px-0">
-            <Navbar blogs={allBlogsData} />
-            <main>{children}</main>
-            <Footer />
-          </div>
-        </ClientThemeProvider>
+        {/* PAGE CONTENT (SERVER by default) */}
+        <main className="px-2 lg:px-0">{children}</main>
+
+        <Footer />
       </body>
     </html>
   );
