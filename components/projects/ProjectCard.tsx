@@ -1,6 +1,3 @@
-
-
-
 'use client';
 
 import React, { useMemo } from 'react';
@@ -14,7 +11,6 @@ export interface Project {
   title: string;
   description: string;
   images: string[];
-  videos?: string[];
   techStack: string[];
   type: 'Frontend' | 'Backend' | 'Full Stack' | 'All';
   liveLink: string;
@@ -39,27 +35,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
       <BorderBeam size={32} duration={8} className="absolute top-0 left-0" />
 
       {/* Media */}
-      <div className="overflow-hidden rounded-lg relative w-full h-32 sm:h-36 mb-3 hidden sm:block">
-        {memoProject.videos?.length ? (
-          <video
-            src={memoProject.videos[0]}
-            className="w-full h-full object-cover rounded-lg shadow-sm"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={memoProject.images?.[0] ?? '/fallback-image.jpg'}
-          />
-        ) : (
-          <Image
-            src={memoProject.images[0]}
-            alt={memoProject.title}
-            fill
-            style={{ objectFit: 'cover' }}
-            className="rounded-lg transition-transform duration-300 hover:scale-105"
-          />
-        )}
+      <div className="overflow-hidden rounded-lg relative w-full aspect-[16/9] mb-3">
+        <Image
+          src={memoProject.images?.[0] ?? '/fallback-image.jpg'}
+          alt={memoProject.title}
+          fill
+          style={{ objectFit: 'cover' }}
+          className="rounded-lg transition-transform duration-300 hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+          placeholder="blur"
+          blurDataURL="/fallback-image-blur.jpg"
+        />
       </div>
 
       {/* Content */}
@@ -87,7 +74,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
           {memoProject.techStack.slice(0, 3).map((tech, i) => (
             <span
               key={`${tech}-${i}`}
-              className="text-xs text-base-content/60  rounded-full px-2 bg-base-300 py-0"
+              className="text-xs text-base-content/60 rounded-full px-2 bg-base-300 py-0"
             >
               {tech}
             </span>

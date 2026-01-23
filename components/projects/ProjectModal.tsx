@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import { useEffect, useMemo } from "react";
@@ -14,7 +12,6 @@ interface Project {
   title: string;
   description: string;
   images: string[];
-  videos?: string[];
   techStack: string[];
   liveLink: string;
   frontendRepo?: string;
@@ -63,7 +60,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     >
       <div
         className="bg-base-200 border border-primary/30 rounded-br-none rounded-tr-none rounded-2xl shadow-2xl
-                   w-full max-h-[90vh] overflow-hidden flex flex-col relative max-w-2xl mx-auto
+                   w-full max-h-[85vh] overflow-hidden flex flex-col relative max-w-2xl mx-auto
                    transition-transform duration-200 ease-out"
         onClick={(e) => e.stopPropagation()}
       >
@@ -76,24 +73,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
         </button>
 
         <div className="flex-1 overflow-y-scroll modal-scrollbar p-6 md:p-8 space-y-6">
-          <div className="w-full h-56 md:h-72 overflow-hidden flex-shrink-0 relative rounded-lg">
-            {project.videos?.length ? (
-              <video
-                src={project.videos[0]}
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
-            ) : project.images?.length ? (
+          <div className="w-full aspect-[16/9] overflow-hidden flex-shrink-0 relative rounded-lg">
+            {project.images?.length ? (
               <Image
                 src={project.images[0]}
                 alt={project.title}
                 fill
                 style={{ objectFit: "cover" }}
                 priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 70vw"
+                placeholder="blur"
+                blurDataURL="/fallback-image-blur.jpg"
               />
             ) : null}
           </div>

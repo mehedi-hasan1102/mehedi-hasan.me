@@ -19,9 +19,6 @@
     "images": [
       "/assets/images/projects/plantsc.png"
     ],
-    "videos": [
-      "/assets/video/plant-video.mp4"
-    ],
     "challenges": "Implementing reliable reminders and syncing data between client and server.",
     "futurePlans": "Add AI-powered plant disease detection and personalized care tips.",
     "type": "Full Stack"
@@ -46,9 +43,6 @@
     "images": [
       "/assets/images/projects/food.png"
     ],
-    "videos": [
-      "/assets/video/FoodGuardian.mp4"
-    ],
     "challenges": "Handling real-time data sync and optimizing performance under heavy load.",
     "type": "Full Stack",
     "futurePlans": "Integrate AI-based food recommendations and expand recipe database."
@@ -72,9 +66,6 @@
     "backendRepo": "https://github.com/mehedi-hasan1102/Duranta-Online-Server",
     "images": [
       "/assets/images/projects/duranta.png"
-    ],
-    "videos": [
-      "/assets/video/duranta-online.mp4"
     ],
     "challenges": "Implementing secure payment integration and real-time synchronization.",
     "futurePlans": "Add multi-player support and analytics dashboard.",
@@ -106,9 +97,6 @@
     "images": [
       "/assets/images/projects/task.png"
     ],
-    "videos": [
-      "/assets/video/TaskManagerApp.mp4"
-    ],
     "challenges": "Designing a clean and maintainable validation architecture using Zod while ensuring consistent form state handling and error feedback across the application.",
     "futurePlans": "Introduce user authentication, personalized task views, and advanced filtering and search capabilities.",
     "type": "Full Stack"
@@ -133,9 +121,6 @@
     "images": [
       "/assets/images/projects/aarena.png"
     ],
-    "videos": [
-      "/assets/video/ActiveArena.mp4"
-    ],
     "challenges": "Implementing secure payment integration and real-time synchronization.",
     "futurePlans": "Add multi-player support and analytics dashboard.",
     "type": "Full Stack"
@@ -157,9 +142,6 @@
     "frontendRepo": "https://github.com/mehedi-hasan1102/Event-Explorer",
     "images": [
       "/assets/images/projects/events.png"
-    ],
-    "videos": [
-      "/assets/video/Home _ Event Explorer.mp4"
     ],
     "challenges": "Managing real-time booking availability and user authentication.",
     "futurePlans": "Add event rating system and push notifications.",
