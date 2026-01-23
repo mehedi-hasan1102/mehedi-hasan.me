@@ -137,7 +137,7 @@ const LinksPage: React.FC = () => {
                       className="
                         inline-flex items-center gap-2 text-sm
                         text-base-content/80
-                        underline-offset-6 decoration-dashed
+                        underline-offset-6 
                         hover:text-primary hover:underline
                         transition-colors duration-200
                       "
