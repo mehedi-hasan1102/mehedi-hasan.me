@@ -18,8 +18,8 @@ const ResourcesPage: React.FC = () => {
   const data: ResourceCategory[] = resourcesJson.resources;
 
   return (
-    <section className="text-base-content font-geist max-w-3xl mx-auto pt-20 min-h-screen p-4 backdrop-blur-sm">
-      
+    <section className="text-base-content font-geist max-w-3xl mx-auto pt-20 p-4">
+      <div className="min-h-screen rounded-lg py-4 backdrop-blur-sm transition-shadow">
       {/* Header */}
       <div className="m-4">
   <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
@@ -77,6 +77,7 @@ const ResourcesPage: React.FC = () => {
             </ul>
           </section>
         ))}
+      </div>
       </div>
     </section>
   );
