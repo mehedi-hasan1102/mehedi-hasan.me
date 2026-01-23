@@ -54,7 +54,7 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
           <Logo />
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex flex-1 justify-center items-center gap-1 text-sm tracking-wide ">
+          {/* <ul className="hidden md:flex flex-1 justify-center items-center gap-1 text-sm tracking-wide ">
             {[
               { name: "Home", route: "/" },
               // { name: "About", route: "/about" },
@@ -78,10 +78,10 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul> */}
 
 {/* underline only active link  */}
-{/* <ul className="hidden md:flex flex-1 justify-center items-center gap-0 text-sm tracking-wide ">
+<ul className="hidden md:flex flex-1 justify-center items-center gap-0 text-sm tracking-wide ">
   {[
     { name: "Home", route: "/" },
     { name: "Projects", route: "/projects" },
@@ -105,7 +105,7 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
       </Link>
     </li>
   ))}
-</ul> */}
+</ul>
 
 
 
