@@ -123,12 +123,12 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
         {menuOpen && (
           <>
             <div
-              className="fixed inset-0 z-20 bg-black/20 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-20 md:hidden"
               onClick={() => setMenuOpen(false)}
             />
 
             <aside className="fixed top-0 left-0 z-30 h-full w-[75%] max-w-sm bg-base-200 border-r border-base-content/10 shadow-xl flex flex-col rounded-r-xl">
-              <div className="flex items-center justify-between px-5 py-4 border-b border-base-content/10">
+              <div className="flex items-center justify-between px-5 py-3 border-b border-base-content/10">
                 <Logo />
                 <button
                   onClick={() => setMenuOpen(false)}
@@ -138,29 +138,50 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
                 </button>
               </div>
 
-              <nav className="flex-1 px-4 py-4 overflow-y-auto">
-                <ul className="flex flex-col gap-1">
-                  {[
-                    { name: "Home", route: "/" },
-                    { name: "About", route: "/about" },
-                    { name: "Projects", route: "/projects" },
-                    { name: "Blog", route: "/blog" },
-                    { name: "Contact", route: "/contact" },
-                  ].map((item) => (
-                    <li key={item.route}>
-                      <Link
-                        href={item.route}
-                        onClick={() => setMenuOpen(false)}
-                        className="block rounded-lg px-4 py-3 text-sm font-medium text-base-content/80 hover:bg-primary/10 hover:text-primary transition"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+            
 
-              <div className="flex justify-center gap-0 px-5 py-4 border-t border-base-content/10">
+              <nav className="flex-1 px-4 py-4 overflow-y-auto">
+  <ul className="flex flex-col gap-1">
+    {[
+      { name: "Home", route: "/" },
+      { name: "About", route: "/about" },
+      { name: "Projects", route: "/projects" },
+      { name: "Blog", route: "/blog" },
+      { name: "Contact", route: "/contact" },
+    ].map((item) => {
+      const active = isActive(item.route);
+
+      return (
+        <li key={item.route}>
+          <Link
+            href={item.route}
+            onClick={() => setMenuOpen(false)}
+            className={`relative inline-flex flex-col items-center px-4 py-3 text-sm font-medium transition
+              ${
+                active
+                  ? "text-primary"
+                  : "text-base-content/80 hover:text-primary"
+              }
+            `}
+          >
+            {/* Text */}
+            <span className="relative">
+              {item.name}
+
+              {/* Underline = text width */}
+              {active && (
+                <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-primary rounded-full" />
+              )}
+            </span>
+          </Link>
+        </li>
+      );
+    })}
+  </ul>
+</nav>
+
+
+              <div className="flex justify-center gap-0 px-5 py-3 border-t border-base-content/10">
                 {socialLinks.map(({ icon: Icon, label, url }) => (
                   <a
                     key={label}
