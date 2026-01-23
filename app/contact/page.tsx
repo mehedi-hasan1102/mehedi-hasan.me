@@ -165,7 +165,7 @@ const ContactMe: React.FC = () => {
         </div>
 
 
-        <div className="flex flex-col md:flex-row gap-8 px-4 mt-12">
+        <div className="flex flex-col md:flex-row gap-12 lg:gap-6 px-4 mt-12">
 
           {/* Form */}
           <div className="w-full md:w-1/2">
@@ -234,7 +234,7 @@ const ContactMe: React.FC = () => {
             {contactItems.map((item, idx) => (
               <div
                 key={idx}
-                className="flex gap-4 pl-4 border-l-2 border-primary/50
+                className="flex gap-4 
                            hover:border-primary transition-colors"
               >
                 <div className="mt-1">{item.icon}</div>

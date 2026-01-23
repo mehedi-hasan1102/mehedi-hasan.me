@@ -5,7 +5,7 @@ import HeroActions from "./HeroActions";
 const HeroSection = () => {
   return (
     <section className="font-geist w-full max-w-3xl mx-auto py-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 rounded-xl p-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 lg:gap-6 rounded-xl p-5">
 
         {/* LCP IMAGE */}
         <div className="flex justify-center">
