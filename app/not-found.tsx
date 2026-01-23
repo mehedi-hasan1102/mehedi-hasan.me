@@ -7,7 +7,7 @@ import { SiHomebrew } from "react-icons/si";
 const NotFound = () => {
   return (
     <section className="font-geist mx-auto px-4 max-w-3xl relative overflow-hidden flex justify-center pt-20">
-      <div className="relative z-10 min-h-screen w-full mt-1  py-4">
+      <div className="relative z-10 min-h-screen w-full mt-1  ">
 
         {/* Header */}
         <div className="m-4 ">
