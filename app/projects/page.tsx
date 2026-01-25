@@ -146,7 +146,7 @@ const AllProjectsPage: React.FC = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1
                                    hover:text-primary underline-offset-6
-                                   decoration-dashed hover:underline"
+                                    hover:underline"
                       >
                         <FiArrowUpRight size={14} /> Live
                       </a>
@@ -158,7 +158,7 @@ const AllProjectsPage: React.FC = () => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1
                                      hover:text-primary underline-offset-6
-                                     decoration-dashed hover:underline"
+                                     hover:underline"
                         >
                           <FaGithub size={14} /> Frontend
                         </a>
@@ -171,7 +171,7 @@ const AllProjectsPage: React.FC = () => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1
                                      hover:text-primary underline-offset-6
-                                     decoration-dashed hover:underline"
+                                     hover:underline"
                         >
                           <FaGithub size={14} /> Backend
                         </a>
@@ -181,7 +181,7 @@ const AllProjectsPage: React.FC = () => {
                         onClick={() => openModal(project)}
                         className="inline-flex items-center gap-1
                                    hover:text-primary underline-offset-6
-                                   decoration-dashed hover:underline"
+                                   hover:underline"
                       >
                         <FiEye size={14} /> Details
                       </button>

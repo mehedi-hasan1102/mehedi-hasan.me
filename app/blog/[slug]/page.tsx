@@ -6,12 +6,7 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
-
-
-    if (!slug) {
-  notFound();
-}
-
+  if (!slug) notFound();
 
   let blog: Blog | null = null;
   try {
@@ -19,11 +14,8 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
   } catch (err) {
     console.error(err);
   }
- 
-  if (!blog) {
-  notFound();
-}
 
-  return <BlogPost blog={blog}  />;
-}
+  if (!blog) notFound();
 
+  return <BlogPost blog={blog} />;
+}

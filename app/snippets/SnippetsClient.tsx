@@ -54,7 +54,7 @@ const SnippetsClient: React.FC<Props> = ({ snippets }) => {
                 </span>
               </div>
 
-              <div className="relative">
+              {/* <div className="relative">
                 <pre className="bg-base-200 p-4 overflow-x-auto text-sm leading-relaxed">
                   <code>{snippet.code}</code>
                 </pre>
@@ -65,7 +65,25 @@ const SnippetsClient: React.FC<Props> = ({ snippets }) => {
                 >
                   {copiedIndex === index ? "✓ Copied" : "⧉ Copy"}
                 </button>
-              </div>
+              </div> */}
+
+              <div className="relative">
+  <pre className="bg-base-200 p-4 overflow-x-auto text-sm leading-relaxed rounded-lg border border-primary/20 shadow-sm">
+    <code>{snippet.code}</code>
+  </pre>
+
+  <button
+    onClick={() => handleCopy(snippet.code, index)}
+    className={`
+      absolute top-3 right-3 inline-flex items-center gap-1 text-xs font-medium
+      px-2 py-1 rounded bg-primary text-primary-content opacity-80
+      hover:opacity-100 transition
+    `}
+  >
+    {copiedIndex === index ? "✓ Copied" : "⧉ Copy"}
+  </button>
+</div>
+
             </article>
           ))}
         </div>
