@@ -5,7 +5,7 @@
 
 /* DaisyUI plugin with only selected themes */
 @plugin "daisyui" {
-  themes: light, dark;  /* Only use light and dark themes */
+  themes: lofi, dark;  /* Only use light and dark themes */
 }
 
 /* =====================================================

@@ -116,8 +116,28 @@ export default async function RootLayout({
   const allBlogsData = await getSortedBlogsData();
 
   return (
-    <html lang="en">
+     <html lang="en" suppressHydrationWarning>
       <head>
+
+      {/* ================= THEME PRELOAD (NO FLICKER) ================= */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  const theme = localStorage.getItem("theme") || "dark";
+                  document.documentElement.setAttribute("data-theme", theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+
+
+
+
+
+
         {/* Preload critical font */}
         <link
           rel="preload"
@@ -150,7 +170,7 @@ export default async function RootLayout({
 
 
 
-<body>
+     <body suppressHydrationWarning>
   {/* SERVER NAVBAR */}
   <Navbar blogs={allBlogsData} />
 
