@@ -103,7 +103,7 @@ const BlogPost: React.FC<Props> = ({ blog }) => {
         {/* Back Button */}
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-sm font-medium hover:text-primary  transition-colors mb-6"
+          className="flex items-center gap-2 cursor-pointer text-sm font-medium hover:text-primary  transition-colors mb-6"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
