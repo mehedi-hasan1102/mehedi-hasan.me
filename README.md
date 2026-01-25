@@ -70,7 +70,7 @@ pnpm run dev
 **🌐 Live Demo**
 
 Hosted on Vercel
-Live Link: https://m-hasan.vercel.app
+Live Link: www.mehedi-hasan.me
 
 
 
@@ -85,7 +85,7 @@ Email: mehedi.hasan11023@gmail.com
 
 LinkedIn: https://www.linkedin.com/in/mehedi-hasan1102
 
-Portfolio: https://m-hasan.vercel.app
+Portfolio: https://www.mehedi-hasan.me
 
 GitHub: https://github.com/mehedi-hasan1102
 
@@ -93,6 +93,3 @@ GitHub: https://github.com/mehedi-hasan1102
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-# mehedi-hasan.me
-# test
-# test
