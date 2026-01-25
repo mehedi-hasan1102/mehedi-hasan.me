@@ -1,0 +1,20 @@
+---
+title: "cn Utility"
+description: "A utility function to conditionally merge Tailwind CSS class names."
+language: "ts"
+---
+
+```ts
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+/**
+ * cn
+ * Combines conditional class names and
+ * intelligently merges Tailwind CSS classes.
+ *
+ * @param inputs - Class values (strings, arrays, objects)
+ */
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}

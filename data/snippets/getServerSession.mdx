@@ -1,0 +1,17 @@
+---
+title: "getServerSession Wrapper"
+description: "A Next.js helper to simplify getting the authenticated user session."
+language: "ts"
+---
+
+```ts
+import { getServerSession as nextGetServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+
+/**
+ * getServerSession
+ * Simplifies retrieving the current user's session on the server.
+ */
+export async function getServerSession() {
+  return await nextGetServerSession(authOptions);
+}
