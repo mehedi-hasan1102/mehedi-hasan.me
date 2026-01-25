@@ -25,20 +25,17 @@ export default function Logo({
   return (
     <Link href={href} className={clsx("inline-flex items-center", className)}>
       <div
-        className="flex items-center gap-2 cursor-pointer select-none
-                   
-                   "
+        className="flex items-center gap-2 cursor-pointer select-none group"
       >
         {showIcon && (
-         
-          <IoCodeSlashOutline size={24} className="text-primary"  />
+          <IoCodeSlashOutline size={24} className="text-(--primary) group-hover:scale-110 transition-transform duration-200"  />
         )}
 
         <span
-          className={`${birthstone.className} text-xl sm:text-2xl font-semibold leading-none`}
+          className={`${birthstone.className} text-xl sm:text-2xl font-semibold leading-none text-(--text)`}
         >
           Mehedi
-          <span className="text-base-content/60 ml-1">Hasan</span>
+          <span className="text-(--text)/60 ml-1">Hasan</span>
         </span>
       </div>
     </Link>

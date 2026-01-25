@@ -91,7 +91,7 @@ const AllProjectsPage: React.FC = () => {
             )}
           </div>
 
-          <div className="h-px bg-base-content/10 mb-4" /> 
+          <div className="h-px bg-(--border) mb-4" /> 
 
           {/* Projects */}
           <div className="space-y-2">
@@ -130,7 +130,7 @@ const AllProjectsPage: React.FC = () => {
                           <span
                             key={`${tech}-${i}`}
                             className="px-2 py-[2px] text-xs rounded-full
-                                       border border-primary/30 bg-base-100"
+                                       border border-(--border) bg-base-100"
                           >
                             {tech}
                           </span>

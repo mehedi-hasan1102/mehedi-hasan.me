@@ -29,10 +29,10 @@ const HeroSection = () => {
           </p>
 
           <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
-            Full-Stack{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            Full-Stack
+            
               Web Developer
-            </span>
+            
           </h1>
 
           <p className="mt-4 text-sm sm:text-base leading-relaxed text-base-content/70 max-w-md">

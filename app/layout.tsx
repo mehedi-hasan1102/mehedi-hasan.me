@@ -12,6 +12,8 @@ import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/NavBar";
 import { getSortedBlogsData } from "@/lib/blogs";
 import FloatingContactCTA from "@/components/common/FloatingContactCTA";
+import { geistSans } from "./fonts";
+import { ClientThemeProvider } from "@/components/common/ClientThemeProvider";
 // ================================================
 // METADATA (SEO / SOCIAL SHARING)
 // ================================================
@@ -19,6 +21,7 @@ export const metadata = {
   title: "Mehedi Hasan | Developer, Storyteller & Technical Writer",
   description:
     "Mehedi Hasan is a Developer, Storyteller, and Technical Writer. Explore modern web projects built with Next.js, React, TypeScript, Node.js, along with detailed case studies and technical articles.",
+  metadataBase: new URL("https://mehedi-hasan.me"),
   keywords: [
     "developer storyteller",
     "technical storyteller",
@@ -116,36 +119,15 @@ export default async function RootLayout({
   const allBlogsData = await getSortedBlogsData();
 
   return (
-     <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
 
-      {/* ================= THEME PRELOAD (NO FLICKER) ================= */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                try {
-                  const theme = localStorage.getItem("theme") || "dark";
-                  document.documentElement.setAttribute("data-theme", theme);
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
 
 
 
 
 
-
-        {/* Preload critical font */}
-        <link
-          rel="preload"
-          href="/fonts/geistmono-latin.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        
 
         {/* Structured data (SEO-safe) */}
         <script
@@ -165,22 +147,24 @@ export default async function RootLayout({
           }}
         />
 
-        <link rel="canonical" href="https://www.mehedi-hasan.me" />
+        <link rel="canonical" href="https://mehedi-hasan.me" />
       </head>
 
 
 
-     <body suppressHydrationWarning>
-  {/* SERVER NAVBAR */}
-  <Navbar blogs={allBlogsData} />
+     <body suppressHydrationWarning className={`${geistSans.variable} antialiased`}>
+  <ClientThemeProvider>
+    {/* SERVER NAVBAR */}
+    <Navbar blogs={allBlogsData} />
 
-  {/* PAGE CONTENT */}
-  <main className="px-2 lg:px-0">{children}</main>
+    {/* PAGE CONTENT */}
+    <main className="px-2 lg:px-0">{children}</main>
 
-  {/* FLOATING CHAT */}
-  <FloatingContactCTA />
+    {/* FLOATING CHAT */}
+    <FloatingContactCTA />
 
-  <Footer />
+    <Footer />
+  </ClientThemeProvider>
 </body>
 
 

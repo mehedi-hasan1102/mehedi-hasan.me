@@ -2,20 +2,20 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { SiHomebrew } from "react-icons/si";
+import { FiHome } from "react-icons/fi";
 
 const NotFound = () => {
   return (
-    <section className="font-geist mx-auto px-4 max-w-3xl relative overflow-hidden flex justify-center pt-20">
-      <div className="relative z-10 min-h-screen w-full mt-1  ">
+    <section className="font-geist text-base-content mx-auto px-4 max-w-3xl relative overflow-hidden flex justify-center pt-20 min-h-screen">
+      <div className="relative z-10 w-full">
 
         {/* Header */}
         <div className="m-4 ">
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-start">
+          <h1 className="text-4xl sm:text-5xl font-semibold leading-tight">
             Oops! Page Not Found
           </h1>
 
-          <p className="text-base mt-3 mb-0 text-base-content/75  ">
+          <p className="text-base mt-3 mb-0 text-base-content/75">
             The page you are looking for doesn’t exist or may have been moved. 
             Check the URL or return to the{" "}
             <Link
@@ -28,7 +28,7 @@ const NotFound = () => {
         </div>
 
         {/* 404 Image */}
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-8 mt-6">
           <Image
             src="/404.png"
             alt="404 Not Found"
@@ -41,15 +41,12 @@ const NotFound = () => {
 
         {/* Button */}
         <div className="flex justify-center py-8">
-          <Link href="/" className="inline-flex flex-col items-start text-start">
-            
-            <span className="mt-3 inline-flex items-center gap-2 hover:text-primary font-medium text-sm">
-              Go Home <SiHomebrew size={16} />
-            </span>
+          <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-base-content/80 hover:text-primary transition-colors">
+            Go Home <FiHome size={16} />
           </Link>
         </div>
 
-        <p className="text-start text-sm text-base-content/50 m-4">
+        <p className="text-center text-sm text-base-content/60 mt-8 mb-4">
           You can explore my projects, skills, or contact section from the homepage.
         </p>
       </div>

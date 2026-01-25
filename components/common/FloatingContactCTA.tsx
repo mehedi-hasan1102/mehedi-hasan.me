@@ -18,7 +18,7 @@ export default function FloatingContactBot() {
   /* ---------- Toasts ---------- */
   const successToast = (message: string) =>
     toast.custom(() => (
-      <div className="flex items-center gap-3 rounded-lg border border-primary/30 bg-base-200 px-4 py-2 shadow-lg">
+      <div className="flex items-center gap-3 rounded-lg border border-(--border) bg-base-200 px-4 py-2 shadow-lg">
         <AiOutlineCheckCircle size={18} className="text-green-500" />
         <span className="text-sm font-medium">{message}</span>
       </div>
@@ -26,7 +26,7 @@ export default function FloatingContactBot() {
 
   const errorToast = (message: string) =>
     toast.custom(() => (
-      <div className="flex items-center gap-3 rounded-lg border border-primary/30 bg-base-200 px-4 py-2 shadow-lg">
+      <div className="flex items-center gap-3 rounded-lg border border-(--border) bg-base-200 px-4 py-2 shadow-lg">
         <AiOutlineCloseCircle size={18} className="text-red-500" />
         <span className="text-sm font-medium">{message}</span>
       </div>
@@ -59,7 +59,7 @@ export default function FloatingContactBot() {
           fixed bottom-24 right-6 z-50
           w-[340px] max-w-[90vw]
           rounded-xl
-          border border-base-content/15
+          border border-(--border)
           bg-base-200/95 backdrop-blur-lg
           shadow-2xl
           transition-all duration-300 ease-out
@@ -67,7 +67,7 @@ export default function FloatingContactBot() {
         `}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-base-content/10">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-(--border)">
           <div>
             <h4 className="text-sm font-semibold">Get in Touch 👋</h4>
             <p className="text-xs text-base-content/60 mt-2">
@@ -90,7 +90,7 @@ export default function FloatingContactBot() {
             required
             type="email"
             placeholder="Email"
-            className="w-full rounded-md bg-transparent border border-base-content/20 px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+            className="w-full rounded-md bg-transparent border border-(--border) px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
           />
 
           <textarea
@@ -98,14 +98,14 @@ export default function FloatingContactBot() {
             required
             rows={4}
             placeholder="Message"
-            className="w-full rounded-md bg-transparent border border-base-content/20 px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none transition-colors"
+            className="w-full rounded-md bg-transparent border border-(--border) px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none transition-colors"
           />
 
           <input type="hidden" name="time" value={new Date().toLocaleString()} />
 
           <button
             type="submit"
-            className="w-full rounded-md bg-primary text-primary-content py-2 text-sm font-medium hover:opacity-90 transition flex items-center justify-center gap-1"
+            className="w-full rounded-md bg-primary text-primary-content py-2 text-sm font-medium hover:opacity-90 transition flex items-center justify-center gap-1 cursor-pointer"
           >
             Send Message <FiArrowUpRight size={14} />
           </button>
@@ -115,7 +115,7 @@ export default function FloatingContactBot() {
       {/* FLOATING CHAT BUTTON */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 h-12 w-12 rounded-full bg-base-300 border border-base-content/20 text-base-content/70 shadow-xl flex items-center justify-center hover:scale-105 active:scale-95 transition cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 h-12 w-12 rounded-full bg-base-300 border border-(--border) text-base-content/70 shadow-xl flex items-center justify-center hover:scale-105 active:scale-95 transition cursor-pointer"
         aria-label="Open chat"
       >
         <FiMessageSquare size={20} />

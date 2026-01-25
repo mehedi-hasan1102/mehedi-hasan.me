@@ -1,42 +1,60 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { FiMoon, FiSun } from "react-icons/fi";
-
 
 interface ThemeToggleProps {
   className?: string;
+  variant?: "icon" | "footer";
+  size?: number;
 }
 
-export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
+export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, variant = "icon", size = 18 }) => {
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<"dark" | "light">("dark"); // default for SSR
+  const { theme, setTheme } = useTheme();
 
-  // Browser-only effect to read localStorage
+  // Wait for component to mount to avoid hydration mismatch
   useEffect(() => {
-    const storedTheme = (localStorage.getItem("theme") as "dark" | "light") || "dark";
-    setTheme(storedTheme);
-    document.documentElement.setAttribute("data-theme", storedTheme);
-    setMounted(true);
+    const id = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(id);
   }, []);
 
+  if (!mounted) {
+    return (
+      <button
+        className={`${variant === "icon" ? "p-2 rounded-lg hover:text-primary" : "underline underline-offset-4 text-xs"} cursor-pointer transition ${className || ""}`}
+        aria-label="Toggle Theme"
+      >
+        {variant === "icon" ? <div style={{ width: size, height: size }} /> : <span>Switch Theme</span>}
+      </button>
+    );
+  }
+
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
+    setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  if (variant === "footer") {
+    const label = theme === "dark" ? "Switch to Light" : "Switch to Dark";
+    return (
+      <button
+        onClick={toggleTheme}
+        className={`underline underline-offset-4 text-xs text-(--muted) hover:text-(--accent) cursor-pointer transition ${className || ""}`}
+        aria-label="Toggle Theme"
+      >
+        {label}
+      </button>
+    );
+  }
 
   return (
     <button
       onClick={toggleTheme}
-      className={`p-2 rounded-lg hover:text-primary  cursor-pointer transition ${className || ""}`}
+      className={`p-2 rounded-lg hover:text-primary cursor-pointer transition ${className || ""}`}
       aria-label="Toggle Theme"
     >
-      {mounted ? (theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />) : (
-        <div style={{ width: 16, height: 16 }} />
-      )}
+      {theme === "dark" ? <FiSun size={size} /> : <FiMoon size={size} />}
     </button>
   );
 };

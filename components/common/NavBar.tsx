@@ -4,10 +4,10 @@ import React, { useState, useMemo, useCallback, useEffect } from "react";
 
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "./ThemeToggle";
 import SearchToggle from "@/components/blogs/SearchToggle";
 import { BlogMetaData } from "@/lib/blogs";
 import Logo from "@/components/common/Logo";
@@ -26,6 +26,7 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
     () => [
       { icon: FaGithub, url: "https://github.com/mehedi-hasan1102", label: "GitHub" },
       { icon: FaLinkedin, url: "https://www.linkedin.com/in/mehedi-hasan1102", label: "LinkedIn" },
+      { icon: FaXTwitter, url: "https://x.com/mehedihasan1102", label: "Twitter" },
     ],
     []
   );
@@ -49,7 +50,7 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
 
         {/* Desktop Navbar */}
     
-<div className="flex items-center justify-between py-3 backdrop-blur-[2px] bg-base-100/40 border-b border-base-content/10 px-4 md:px-6">
+<div className="flex items-center justify-between py-3 backdrop-blur-[2px] bg-base-100/40 border-b border-(--border) px-4 md:px-6">
 
           <Logo />
 
@@ -81,7 +82,7 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
           </ul> */}
 
 {/* underline only active link  */}
-<ul className="hidden md:flex flex-1 justify-center items-center gap-0 text-sm tracking-wide ">
+<ul className="hidden md:flex flex-1 justify-center items-center gap-1 text-sm tracking-tight">
   {[
     { name: "Home", route: "/" },
     { name: "Projects", route: "/projects" },
@@ -92,16 +93,14 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
     <li key={item.route}>
       <Link
         href={item.route}
-        className={`relative inline-block px-2 py-1 transition-colors duration-200
-          ${isActive(item.route) ? "text-primary" : "text-base-content/70 hover:text-primary"}
+        className={`relative inline-flex items-center px-3 py-1.5 transition-colors duration-200
+          ${isActive(item.route) ? "text-(--text) font-medium" : "text-(--muted) hover:text-(--muted)/50"}
         `}
       >
-        <span className="relative">
-          {item.name}
-          {isActive(item.route) && (
-            <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-primary rounded-full" />
-          )}
-        </span>
+        {item.name}
+        {isActive(item.route) && (
+          <span className="absolute left-0 right-0 -bottom-[11px] h-0.5 bg-(--accent) rounded-full" />
+        )}
       </Link>
     </li>
   ))}
@@ -126,9 +125,8 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
               </a>
             ))}
 
-            <div className="ml-2 pl-1 border-l border-base-content/10 flex items-center gap-0">
+            <div className="ml-2 pl-1 border-l border-(--border) flex items-center gap-0">
               <SearchToggle blogs={blogs} />
-              <ThemeToggle />
             </div>
           </div>
 
@@ -136,8 +134,6 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
          {/* Mobile Controls */}
 <div className="flex items-center gap-0 md:hidden">
   <SearchToggle blogs={blogs} />
-
-  <ThemeToggle />
 
   {!menuOpen && (
     <button
@@ -166,11 +162,11 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
 
   {/* Drawer */}
   <aside
-    className={`fixed top-0 left-0 z-30 h-full w-[75%] max-w-sm bg-base-200 border-r border-base-content/10 shadow-xl flex flex-col rounded-r-xl transition-transform duration-300 ${
+    className={`fixed top-0 left-0 z-30 h-full w-[75%] max-w-sm bg-base-200 border-r border-(--border) shadow-xl flex flex-col rounded-r-xl transition-transform duration-300 ${
       menuOpen ? "translate-x-0" : "-translate-x-full"
     }`}
   >
-    <div className="flex items-center justify-between px-5 py-3 border-b border-base-content/10">
+    <div className="flex items-center justify-between px-5 py-3 border-b border-(--border)">
       <Logo />
       <button
   onClick={() => setMenuOpen(false)}
@@ -218,7 +214,7 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
                 <span className="relative">
                   {item.name}
                   {active && (
-                    <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-primary rounded-full" />
+                    <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-(--accent) rounded-full" />
                   )}
                 </span>
               </Link>
@@ -228,7 +224,7 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
       </ul>
     </nav>
 
-    <div className="flex justify-center gap-0 px-5 py-3 border-t border-base-content/10">
+    <div className="flex justify-center gap-0 px-5 py-3 border-t border-(--border)">
       {socialLinks.map(({ icon: Icon, label, url }) => (
         <a
           key={label}

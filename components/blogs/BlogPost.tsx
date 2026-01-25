@@ -65,12 +65,12 @@ const BlogPost: React.FC<Props> = ({ blog }) => {
       
       return (
         <div className="relative">
-          <pre {...props} className="bg-base-200 p-4 overflow-x-auto text-sm leading-relaxed rounded-lg border border-primary/20">
+          <pre {...props} className="bg-base-200 p-4 overflow-x-auto text-sm leading-relaxed rounded-lg border border-(--border)">
             {children}
           </pre>
           <button
             onClick={() => handleCopy(codeContent)}
-            className="absolute top-3 right-3 inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded bg-primary text-primary-content opacity-80 hover:opacity-100 transition"
+            className="absolute top-3 right-3 inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded bg-primary text-primary-content opacity-80 hover:opacity-100 transition cursor-pointer"
           >
             {isCopied ? "✓ Copied" : "⧉ Copy"}
           </button>
@@ -80,7 +80,7 @@ const BlogPost: React.FC<Props> = ({ blog }) => {
   };
 
   return (
-    <article className="min-h-screen bg-gradient-to-b from-base-100 to-base-100">
+    <article className="min-h-screen bg-base-100">
       <ScrollProgress />
 
       {/* Hero Section */}
@@ -96,11 +96,11 @@ const BlogPost: React.FC<Props> = ({ blog }) => {
         priority
       />
 
-      {/* Top gradient */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-base-100 to-transparent" />
+      {/* Top gradient overlay to blend image into page background */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[linear-gradient(to_bottom,var(--bg),transparent)]" />
 
-      {/* Bottom gradient */}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-base-100 to-transparent" />
+      {/* Bottom gradient overlay to fade image into content area */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(to_top,var(--bg),transparent)]" />
     </div>
   </div>
 )}
@@ -134,11 +134,11 @@ const BlogPost: React.FC<Props> = ({ blog }) => {
             </span>
           </div>
           
-          <h1 className="text-3xl sm:text-3xl lg:text-3xl font-bold tracking-tight leading-[1.1] text-base-content mb-4">
+          <h1 className="text-4xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.05] text-base-content mb-5">
             {blog.title}
           </h1>
           
-          <div className="flex items-center gap-6 text-sm text-base-content/70 border-t border-base-content/10 pt-4">
+          <div className="flex items-center gap-6 text-sm text-base-content/70 border-t border-(--border) pt-4">
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -168,23 +168,23 @@ const BlogPost: React.FC<Props> = ({ blog }) => {
        
 
 <div className="
-  max-w-3xl mx-auto px-4 text-base-content text-sm leading-relaxed
+  max-w-3xl mx-auto px-4 text-base-content text-base leading-7
 
   [&_p]:my-4
-  [&_h1]:mt-6 [&_h1]:mb-4 [&_h1]:font-black
-  [&_h2]:mt-5 [&_h2]:mb-3 [&_h2]:font-bold
-  [&_h3]:mt-4 [&_h3]:mb-2 [&_h3]:font-semibold
+  [&_h1]:mt-8 [&_h1]:mb-4 [&_h1]:text-3xl [&_h1]:font-semibold
+  [&_h2]:mt-7 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold
+  [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-xl [&_h3]:font-medium
   [&_ul]:my-4 [&_ul]:space-y-2 [&_ul]:list-disc [&_ul]:ml-6
   [&_ol]:my-4 [&_ol]:space-y-2 [&_ol]:list-decimal [&_ol]:ml-6
-  [&_a]:underline [&_a]:underline-offset-4  [&_a]:text-base-content [&_a]:transition-colors [&_a:hover]:text-primary
-  [&_blockquote]:my-4 [&_blockquote]:pl-4 [&_blockquote]:border-l-2 [&_blockquote]:border-primary/50
-  [&_pre]:my-4 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:bg-base-200
-  [&_code:not(pre_code)]:my-2 [&_code:not(pre_code)]:px-2 [&_code:not(pre_code)]:py-1 [&_code:not(pre_code)]:rounded-md [&_code:not(pre_code)]:bg-base-200/60 [&_code:not(pre_code)]:text-primary
+  [&_a]:underline [&_a]:underline-offset-4 [&_a]:text-base-content [&_a]:transition-colors [&_a:hover]:text-primary
+  [&_blockquote]:my-5 [&_blockquote]:pl-4 [&_blockquote]:border-l-2 [&_blockquote]:border-(--border) [&_blockquote]:text-base [&_blockquote]:leading-7
+  [&_pre]:my-5 [&_pre]:p-4 [&_pre]:rounded-lg [&_pre]:bg-base-200
+  [&_code:not(pre_code)]:my-2 [&_code:not(pre_code)]:px-2 [&_code:not(pre_code)]:py-1 [&_code:not(pre_code)]:rounded-md [&_code:not(pre_code)]:bg-base-200/60 [&_code:not(pre_code)]:text-primary [&_code:not(pre_code)]:text-[0.95rem]
 
-  [&_hr]:my-8
+  [&_hr]:my-10
 [&_hr]:border-0
 [&_hr]:border-t
-[&_hr]:border-base-content/10
+[&_hr]:border-(--border)
 
 ">
 

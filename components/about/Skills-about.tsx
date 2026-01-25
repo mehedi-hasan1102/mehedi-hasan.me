@@ -30,7 +30,7 @@ const SkillsAboutSection: React.FC = () => {
         <div
           className="
             relative z-10
-            border-[1px] border-base-content
+            border-[1px] border-(--border)
             px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4
             bg-base-100
             shadow-[4px_4px_0px_0px_rgba(0,0,0,0.05)]
@@ -96,7 +96,7 @@ const SkillsAboutSection: React.FC = () => {
               {skills.map((skill, sIdx) => (
                 <span
                   key={sIdx}
-                  className="relative group overflow-hidden px-2 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[11px] bg-base-100 font-semibold tracking-wide backdrop-blur-md border border-base-content/5 text-base-content/80 rounded-lg cursor-default transition-colors duration-300 hover:border-primary/50 hover:text-primary"
+                  className="relative group overflow-hidden px-2 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[11px] bg-base-100 font-semibold tracking-wide backdrop-blur-md border border-(--border) text-base-content/80 rounded-lg cursor-default transition-colors duration-300 hover:border-(--border) hover:text-primary"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -z-10" />
                   {skill}

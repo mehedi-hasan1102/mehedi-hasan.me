@@ -40,7 +40,7 @@ const ContactHomePage: React.FC = () => {
       <div
         className="
           mt-4 flex items-center gap-2
-          rounded-md border border-base-content/20
+          rounded-md border border-(--border)
           px-2 py-1.5
           focus-within:border-primary
           transition-colors

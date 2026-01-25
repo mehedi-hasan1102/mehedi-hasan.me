@@ -29,7 +29,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
   const memoProject = useMemo(() => project, [project]);
 
   return (
-    <div className="relative border border-primary/30 rounded-lg p-4 overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
+    <div className="relative border border-(--border) rounded-lg p-4 overflow-hidden shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md">
       
       {/* Border Beam */}
       <BorderBeam size={32} duration={8} className="absolute top-0 left-0" />
@@ -95,7 +95,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
           <button
             onClick={() => onOpenModal(memoProject)}
             aria-label={`View details for ${memoProject.title}`}
-            className="inline-flex items-center gap-1 text-base-content/80 hover:text-primary transition"
+            className="inline-flex items-center gap-1 text-base-content/80 hover:text-primary transition cursor-pointer"
           >
             <FiEye size={14} /> Details
           </button>

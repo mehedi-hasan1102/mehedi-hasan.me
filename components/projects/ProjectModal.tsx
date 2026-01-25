@@ -59,7 +59,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       onClick={closeModal}
     >
       <div
-        className="bg-base-200 border border-primary/30 rounded-br-none rounded-tr-none rounded-2xl shadow-2xl
+        className="bg-base-200 border border-(--border) rounded-br-none rounded-tr-none rounded-2xl shadow-2xl
                    w-full max-h-[80vh] overflow-hidden flex flex-col relative max-w-2xl mx-auto
                    transition-transform duration-200 ease-out"
         onClick={(e) => e.stopPropagation()}
@@ -135,7 +135,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-base-300/40 border border-primary/20 rounded-xl p-5 space-y-3">
+            <div className="bg-base-300/40 border border-(--border) rounded-xl p-5 space-y-3">
               <h3 className="text-md font-medium text-base-content">
                 Key Features
               </h3>
@@ -150,7 +150,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               </ul>
             </div>
 
-            <div className="bg-base-300/40 border border-primary/20 rounded-xl p-5 space-y-3">
+            <div className="bg-base-300/40 border border-(--border) rounded-xl p-5 space-y-3">
               <h3 className="text-md font-medium text-base-content">
                 Technologies Used
               </h3>
@@ -158,7 +158,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 {project.techStack.map((tech, i) => (
                   <span
                     key={tech + i}
-                    className="px-3 py-1 text-xs md:text-sm border border-primary/30 rounded-lg text-base-content/80"
+                    className="px-3 py-1 text-xs md:text-sm border border-(--border) rounded-lg text-base-content/80"
                   >
                     {tech}
                   </span>

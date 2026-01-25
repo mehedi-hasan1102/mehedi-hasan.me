@@ -6,6 +6,8 @@ import { FaEnvelope } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import Logo from "@/components/common/Logo";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
+import { useVisitorLocation } from "@/hooks/useVisitorLocation";
 
 /* ---------------- Types ---------------- */
 
@@ -31,6 +33,8 @@ const scrollToTop = () => {
 /* ---------------- Component ---------------- */
 
 const Footer = () => {
+  const { location } = useVisitorLocation();
+
   const socialLinks: SocialLink[] = [
     { icon: FaGithub, href: "https://github.com/mehedi-hasan1102", label: "GitHub" },
     { icon: FaLinkedin, href: "https://www.linkedin.com/in/mehedi-hasan1102/", label: "LinkedIn" },
@@ -51,11 +55,12 @@ const Footer = () => {
     { label: "Dashboard", href: "/dashboard" },
     { label: "Resources", href: "/resources" },
     { label: "Snippets", href: "/snippets" },
+    { label: "Resume", href: "/Resume_of_Mehedi_Hasan.pdf" },
     { label: "Book a Meeting", href: CALENDLY_URL },
   ];
 
   return (
-    <footer className="mx-auto max-w-3xl mt-12  backdrop-blur-xl px-4 pb-0 text-sm text-base-content border-t border-base-content/10">
+    <footer className="mx-auto max-w-3xl mt-12  backdrop-blur-xl px-4 pb-0 text-sm text-base-content border-t border-(--border)">
       
       {/* ---------------- MOBILE ---------------- */}
       <div className="space-y-10 md:hidden py-6">
@@ -100,10 +105,10 @@ const Footer = () => {
         </div>
 
         {/* Brand */}
-        <div className="border-t border-base-content/10 pt-6 space-y-4">
-          <Logo />
+        <div className="border-t border-(--border) pt-6 space-y-4">
+          <Logo showIcon={false} />
 
-          <div className="flex gap-4">
+ <div className="flex gap-4">
             {socialLinks.map((link) => {
               const Icon = link.icon;
               return (
@@ -121,13 +126,25 @@ const Footer = () => {
             })}
           </div>
 
-          <button
-            onClick={scrollToTop}
-            className="inline-flex items-center gap-2 rounded-md bg-base-200 px-4 py-2
-                       text-xs text-base-content/80 transition hover:bg-base-300 "
-          >
-            ↑ Back to top
-          </button>
+
+
+<div className="mt-6 flex items-center gap-2">
+            <button
+              onClick={scrollToTop}
+              className="text-xs text-base-content/50 transition hover:text-primary cursor-pointer"
+            >
+              ↑ Back to top
+            </button>
+            <ThemeToggle className="text-base-content/60 hover:text-primary hover:bg-base-300/40 rounded-lg" size={16} />
+          </div>
+
+
+
+          {location && (
+            <p className="text-xs text-base-content/50">
+              Last visit from {location.city}, {location.countryCode}
+            </p>
+          )}
 
           <p className="text-xs text-base-content/40">
             © {new Date().getFullYear()} Mehedi Hasan
@@ -135,11 +152,13 @@ const Footer = () => {
         </div>
       </div>
 
+      
+
       {/* ---------------- DESKTOP ---------------- */}
       <div className="hidden md:grid grid-cols-3 gap-12 py-6">
         {/* Brand */}
         <div className="space-y-4">
-          <Logo />
+          <Logo showIcon={false} />
 
           <div className="flex gap-4">
             {socialLinks.map((link) => {
@@ -158,6 +177,14 @@ const Footer = () => {
               );
             })}
           </div>
+
+          {location && (
+            <p className="text-xs text-base-content/50">
+              Last visit from {location.city}, {location.countryCode}
+            </p>
+          )}
+
+          
 
           <p className="text-xs text-base-content/40">
             © {new Date().getFullYear()} Mehedi Hasan
@@ -201,12 +228,15 @@ const Footer = () => {
             ))}
           </ul>
 
-          <button
-            onClick={scrollToTop}
-            className="mt-6 text-xs text-base-content/50 transition hover:text-primary cursor-pointer"
-          >
-            ↑ Back to top
-          </button>
+          <div className="mt-6 flex items-center gap-2">
+            <button
+              onClick={scrollToTop}
+              className="text-xs text-base-content/50 transition hover:text-primary cursor-pointer"
+            >
+              ↑ Back to top
+            </button>
+            <ThemeToggle className="text-base-content/60 hover:text-primary hover:bg-base-300/40 rounded-lg" size={16} />
+          </div>
         </nav>
       </div>
     </footer>

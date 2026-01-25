@@ -8,7 +8,7 @@ The portfolio also includes a lightweight demo authentication context for protec
 
 Modern Tech Stack: Next.js App Router + TypeScript for a type-safe, maintainable codebase
 
-Beautiful UI: TailwindCSS + DaisyUI with my custom theme logic
+Beautiful UI: TailwindCSS with custom CSS variables for theming
 
 Motion Animations: Smooth UI transitions powered by Framer Motion
 
@@ -18,7 +18,7 @@ Blog Listing: Centralized blog section rendered from local content or MDX
 
 GitHub Contribution Calendar: Visual representation of my coding activity
 
-Theme Switcher: dark / light theme toggle using DaisyUI
+Theme Switcher: dark / light theme toggle using next-themes
 
 Responsive Layout: Fully optimized for all devices
 
@@ -34,7 +34,7 @@ TypeScript
 
 TailwindCSS
 
-DaisyUI
+next-themes
 
 Framer Motion
 
@@ -93,3 +93,4 @@ GitHub: https://github.com/mehedi-hasan1102
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+# yest

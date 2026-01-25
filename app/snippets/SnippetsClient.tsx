@@ -39,7 +39,7 @@ const SnippetsClient: React.FC<Props> = ({ snippets }) => {
           {snippets.map((snippet, index) => (
             <article
               key={index}
-              className="rounded-lg border border-primary/20 bg-base-100 overflow-hidden"
+              className="rounded-lg border border-(--border) bg-base-100 overflow-hidden"
             >
               <div className="flex items-start justify-between gap-4 p-4">
                 <div>
@@ -68,7 +68,7 @@ const SnippetsClient: React.FC<Props> = ({ snippets }) => {
               </div> */}
 
               <div className="relative">
-  <pre className="bg-base-200 p-4 overflow-x-auto text-sm leading-relaxed rounded-lg border border-primary/20 shadow-sm">
+  <pre className="bg-base-200 p-4 overflow-x-auto text-sm leading-relaxed rounded-lg border border-(--border) shadow-sm">
     <code>{snippet.code}</code>
   </pre>
 
@@ -77,7 +77,7 @@ const SnippetsClient: React.FC<Props> = ({ snippets }) => {
     className={`
       absolute top-3 right-3 inline-flex items-center gap-1 text-xs font-medium
       px-2 py-1 rounded bg-primary text-primary-content opacity-80
-      hover:opacity-100 transition
+      hover:opacity-100 transition cursor-pointer
     `}
   >
     {copiedIndex === index ? "✓ Copied" : "⧉ Copy"}

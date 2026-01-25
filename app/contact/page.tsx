@@ -42,7 +42,7 @@ const ContactMe: React.FC = () => {
 
   const successToast = (message: string) =>
     toast.custom(() => (
-      <div className="flex items-center gap-3 rounded-lg border border-primary/30 bg-base-200 px-4 py-2 shadow-lg">
+      <div className="flex items-center gap-3 rounded-lg border border-(--border) bg-base-200 px-4 py-2 shadow-lg">
         <AiOutlineCheckCircle size={18} className="text-green-500" />
         <span className="text-sm font-medium">{message}</span>
       </div>
@@ -50,7 +50,7 @@ const ContactMe: React.FC = () => {
 
   const errorToast = (message: string) =>
     toast.custom(() => (
-      <div className="flex items-center gap-3 rounded-lg border border-primary/30 bg-base-200 px-4 py-2 shadow-lg">
+      <div className="flex items-center gap-3 rounded-lg border border-(--border) bg-base-200 px-4 py-2 shadow-lg">
         <AiOutlineCloseCircle size={18} className="text-red-500" />
         <span className="text-sm font-medium">{message}</span>
       </div>
@@ -175,16 +175,15 @@ const ContactMe: React.FC = () => {
   name="name"
   required
   placeholder="Your name"
-  className="flex-1 bg-transparent border border-base-content/20 rounded-md px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+  className="flex-1 bg-transparent border border-(--border) rounded-md px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
 />
 
 <input
   name="phone"
   required
   type="tel"
-  pattern="[0-9]{10}"
   placeholder="Phone"
-  className="flex-1 bg-transparent border border-base-content/20 rounded-md px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+  className="flex-1 bg-transparent border border-(--border) rounded-md px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
 />
 
 <input
@@ -192,14 +191,14 @@ const ContactMe: React.FC = () => {
   required
   type="email"
   placeholder="Email"
-  className="flex-1 bg-transparent border border-base-content/20 rounded-md px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+  className="flex-1 bg-transparent border border-(--border) rounded-md px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
 />
 
 <input
   name="subject"
   required
   placeholder="Subject"
-  className="flex-1 bg-transparent border border-base-content/20 rounded-md px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+  className="flex-1 bg-transparent border border-(--border) rounded-md px-3 py-2 text-sm placeholder:text-base-content/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
 />
  </div>
 
@@ -208,7 +207,7 @@ const ContactMe: React.FC = () => {
                 required
                 rows={5}
                 placeholder="Message"
-                className="textarea textarea-bordered rounded-lg w-full flex-1 bg-transparent border border-base-content/20
+                className="textarea textarea-bordered rounded-lg w-full flex-1 bg-transparent border border-(--border)
         placeholder:text-base-content/50
         focus:border-primary focus:ring-1 focus:ring-primary
         outline-none transition-colors

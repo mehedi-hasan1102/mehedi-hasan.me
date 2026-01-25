@@ -3,24 +3,187 @@
 ===================================================== */
 @import "tailwindcss";
 
-/* DaisyUI plugin with only selected themes */
-@plugin "daisyui" {
-  themes: light, dark;
+
+/* =====================================================
+   THEME VARIABLES (Next-Themes)
+===================================================== */
+
+[data-theme="light"],
+:root {
+  /* Vercel-inspired light mode */
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #999999;
+  --border: #e5e5e5;
+  --primary: #111111;
+  --primary-hover: #000000;
+  --accent: #000000;
+  --accent-foreground: #ffffff;
+  --card-bg: #fafafa;
+  --card-border: #e5e5e5;
 }
+
+[data-theme="dark"],
+.dark {
+  /* Vercel-inspired dark mode */
+  --bg: #000000;
+  --text: #fafafa;
+  --muted: #808080;
+  --border: #262626;
+  --primary: #ffffff;
+  --primary-hover: #cccccc;
+  --accent: #ffffff;
+  --accent-foreground: #000000;
+  --card-bg: #111111;
+  --card-border: #262626;
+}
+
+
+
 
 
 
 /* =====================================================
    BASE STYLES
 ===================================================== */
+
+
 body {
-  font-family: 'Geist Mono', monospace;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  min-height: 100vh;       /* ensure full page height */
-  overflow-x: hidden;      /* prevent horizontal scroll */
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  background-color: var(--bg);
+  color: var(--text);
 }
+
+a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 180ms ease, opacity 180ms ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  color: var(--text);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+}
+
+.card-surface {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+}
+
+.hover-accent {
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.hover-accent:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+code, pre, kbd, samp {
+  font-family: 'Geist Mono', 'SFMono-Regular', 'Menlo', monospace;
+}
+
+/* Utility classes for common patterns */
+.text-base-content {
+  color: var(--text);
+}
+
+.text-base-content\/40 {
+  color: color-mix(in srgb, var(--text) 40%, transparent);
+}
+
+.text-base-content\/45 {
+  color: color-mix(in srgb, var(--text) 45%, transparent);
+}
+
+.text-base-content\/50 {
+  color: color-mix(in srgb, var(--text) 50%, transparent);
+}
+
+.text-base-content\/60 {
+  color: color-mix(in srgb, var(--text) 60%, transparent);
+}
+
+.text-base-content\/70 {
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+}
+
+.text-base-content\/80 {
+  color: color-mix(in srgb, var(--text) 80%, transparent);
+}
+
+.bg-base-100 {
+  background-color: var(--bg);
+}
+
+.bg-base-200 {
+  background-color: var(--card-bg);
+}
+
+.bg-base-300\/50 {
+  background-color: color-mix(in srgb, var(--card-bg) 50%, transparent);
+}
+
+.bg-dark\/50 {
+  background-color: rgba(10, 10, 10, 0.5);
+}
+
+.border-base-content\/5 {
+  border-color: color-mix(in srgb, var(--text) 5%, transparent);
+
+.border-base-content\/10 {
+  border-color: color-mix(in srgb, var(--text) 10%, transparent);
+}
+}
+
+.border-primary\/30 {
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.border-primary\/50 {
+  border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+.hover\:text-primary:hover {
+  color: var(--primary);
+}
+
+.hover\:border-primary\/50:hover {
+
+  .hover\:bg-base-200\/40:hover {
+    background-color: color-mix(in srgb, var(--card-bg) 40%, transparent);
+  }
+
+  .hover\:bg-base-300\/40:hover {
+    background-color: color-mix(in srgb, var(--card-bg) 40%, transparent);
+  }
+  border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+
+
+
+
+
+
+
 
 html {
   scroll-behavior: smooth; /* full-page smooth scroll */
@@ -33,13 +196,7 @@ html {
    CUSTOM FONT IMPORTS
 ===================================================== */
 
-@font-face {
-  font-family: "Geist Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/geistmono-latin.woff2") format("woff2");
-}
+/* Geist Sans is imported via next/font/local in app/fonts.ts */
 
 
 
@@ -54,12 +211,12 @@ html {
 }
 
 .simplebar-scrollbar:before {
-  background-color: #695EFB !important; /* custom thumb color */
+  background-color: var(--accent) !important; /* theme accent thumb */
   border-radius: 10px !important;
 }
 
 .simplebar-scrollbar:hover:before {
-  background-color: #695EFB !important; /* hover color */
+  background-color: var(--accent) !important; /* keep accent on hover */
 }
 
 
@@ -73,7 +230,7 @@ html {
 /* Modal scrollbar: Firefox */
 .modal-scrollbar {
   scrollbar-width: thin;                 /* thin scrollbar */
-  scrollbar-color: #695EFB #1f2933;     /* thumb | track */
+  scrollbar-color: var(--accent) var(--bg);     /* thumb | track using theme accent */
 }
 
 /* Modal scrollbar: Chrome / Edge / Safari */
@@ -82,19 +239,19 @@ html {
 }
 
 .modal-scrollbar::-webkit-scrollbar-track {
-  background: rgba(31, 41, 51, 0.9);     /* track background */
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--bg) 90%, transparent);     /* theme track */
+  border-left: 1px solid var(--border);
 }
 
 .modal-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #695EFB;            /* thumb color */
+  background-color: var(--accent);            /* theme accent thumb */
   border-radius: 10px;
   border: 2px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
 
 .modal-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #16a34a;            /* thumb hover color */
+  background-color: var(--accent);            /* keep accent on hover */
 }
 
 
