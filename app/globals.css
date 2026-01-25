@@ -5,8 +5,25 @@
 
 /* DaisyUI plugin with only selected themes */
 @plugin "daisyui" {
-  themes: lofi, dark;  /* Only use light and dark themes */
+  themes: light, dark;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* =====================================================
    BASE STYLES
