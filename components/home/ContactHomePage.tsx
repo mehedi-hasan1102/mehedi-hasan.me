@@ -31,7 +31,7 @@ const ContactHomePage: React.FC = () => {
       </div>
 
       {/* Subtitle */}
-      <p className="text-sm text-base-content/70 leading-relaxed max-w-xl">
+      <p className="text-sm text-base-content/70 leading-relaxed ">
         Have a question, idea, or opportunity? Send a quick message and connect
         with me directly on WhatsApp.
       </p>
