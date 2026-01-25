@@ -83,20 +83,27 @@ const BlogPost: React.FC<Props> = ({ blog }) => {
       <ScrollProgress />
 
       {/* Hero Section */}
+     
       {blog.image && (
-        <div className="flex justify-center mb-16 overflow-hidden mt-16">
-          <div className="relative w-full max-w-3xl h-80 sm:h-96 lg:h-[480px]">
-            <Image
-              src={blog.image}
-              alt={blog.title}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-base-100 via-transparent to-transparent" />
-          </div>
-        </div>
-      )}
+  <div className="flex justify-center mb-16 overflow-hidden mt-16">
+    <div className="relative w-full max-w-3xl h-80 sm:h-96 lg:h-[480px]">
+      <Image
+        src={blog.image}
+        alt={blog.title}
+        fill
+        className="object-cover"
+        priority
+      />
+
+      {/* Top gradient */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-base-100 to-transparent" />
+
+      {/* Bottom gradient */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-base-100 to-transparent" />
+    </div>
+  </div>
+)}
+
 
       {/* Main Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
