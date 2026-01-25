@@ -3,7 +3,6 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { FaArrowUpRightDots } from 'react-icons/fa6';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 const GitHubActivitySection: React.FC = () => {
