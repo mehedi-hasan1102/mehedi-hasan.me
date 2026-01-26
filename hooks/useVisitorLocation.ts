@@ -1,32 +1,21 @@
 import { useEffect, useState } from "react";
 
-interface LocationData {
+interface LastVisitorData {
   city: string;
+  region: string;
   country: string;
   countryCode: string;
+  timestamp: string;
 }
 
 export const useVisitorLocation = () => {
-  const [location, setLocation] = useState<LocationData | null>(null);
+  const [lastVisitor, setLastVisitor] = useState<LastVisitorData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchLocation = async () => {
+    const updateLastVisitor = async () => {
       try {
-        // Always prioritize cached/previous location
-        const cached = localStorage.getItem("visitorLocation");
-        if (cached) {
-          setLocation(JSON.parse(cached));
-          setLoading(false);
-          return;
-        }
-
-        // Only fetch new location if no cache exists
-        if (typeof navigator !== "undefined" && !navigator.onLine) {
-          setLoading(false);
-          return;
-        }
-
+        // 1. Fetch current visitor's location
         const fetchWithTimeout = async (url: string, timeoutMs = 2500) => {
           const controller = new AbortController();
           const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -39,32 +28,68 @@ export const useVisitorLocation = () => {
           }
         };
 
-        let data: any;
-        try {
-          // Primary provider
-          data = await fetchWithTimeout("https://ipapi.co/json/");
-        } catch {
-          // Fallback provider
-          data = await fetchWithTimeout("https://ipwho.is/");
+        if (typeof navigator !== "undefined" && !navigator.onLine) {
+          // Offline: fetch from API without updating
+          await fetchLastVisitorFromAPI();
+          return;
         }
 
-        const locationData: LocationData = {
-          city: data.city || "Unknown",
-          country: data.country_name || data.country || "Unknown",
-          countryCode: (data.country_code || data.country_code)?.toString().toUpperCase() || "",
+        let currentLocationData: any;
+        try {
+          // Primary provider
+          currentLocationData = await fetchWithTimeout("https://ipapi.co/json/");
+        } catch {
+          // Fallback provider
+          currentLocationData = await fetchWithTimeout("https://ipwho.is/");
+        }
+
+        const currentLocation = {
+          city: currentLocationData.city || "Unknown",
+          region: currentLocationData.region || currentLocationData.state || "Unknown",
+          country: currentLocationData.country_name || currentLocationData.country || "Unknown",
+          countryCode: (currentLocationData.country_code || currentLocationData.country_code)?.toString().toUpperCase() || "",
         };
 
-        localStorage.setItem("visitorLocation", JSON.stringify(locationData));
-        setLocation(locationData);
+        // 2. POST current location to update last visitor
+        await fetch("/api/last-visitor", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(currentLocation),
+        }).catch((err) => {
+          console.warn("Failed to update last visitor:", err);
+        });
+
+        // 3. Fetch and display last visitor
+        await fetchLastVisitorFromAPI();
       } catch (error) {
-        console.error("Error fetching location:", error);
+        console.error("Error in updateLastVisitor:", error);
+        // Try to fetch last visitor even if current location failed
+        await fetchLastVisitorFromAPI();
       } finally {
         setLoading(false);
       }
     };
 
-    fetchLocation();
+    const fetchLastVisitorFromAPI = async () => {
+      try {
+        const response = await fetch("/api/last-visitor", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.data) {
+            setLastVisitor(data.data);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching last visitor from API:", error);
+      }
+    };
+
+    updateLastVisitor();
   }, []);
 
-  return { location, loading };
+  return { lastVisitor, loading };
 };

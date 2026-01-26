@@ -33,7 +33,7 @@ const scrollToTop = () => {
 /* ---------------- Component ---------------- */
 
 const Footer = () => {
-  const { location } = useVisitorLocation();
+  const { lastVisitor, loading } = useVisitorLocation();
 
   const socialLinks: SocialLink[] = [
     { icon: FaGithub, href: "https://github.com/mehedi-hasan1102", label: "GitHub" },
@@ -140,10 +140,14 @@ const Footer = () => {
 
 
 
-          {location && (
+          {lastVisitor && !loading ? (
             <p className="text-xs text-base-content/50">
-              Last visit from {location.city}, {location.countryCode}
+              Last visit from {lastVisitor.city}, {lastVisitor.countryCode}
             </p>
+          ) : loading ? (
+            <p className="text-xs text-base-content/50">Loading...</p>
+          ) : (
+            <p className="text-xs text-base-content/50">No previous visitor</p>
           )}
 
           <p className="text-xs text-base-content/40">
@@ -178,10 +182,14 @@ const Footer = () => {
             })}
           </div>
 
-          {location && (
+          {lastVisitor && !loading ? (
             <p className="text-xs text-base-content/50">
-              Last visit from {location.city}, {location.countryCode}
+              Last visit from {lastVisitor.city}, {lastVisitor.countryCode}
             </p>
+          ) : loading ? (
+            <p className="text-xs text-base-content/50">Loading...</p>
+          ) : (
+            <p className="text-xs text-base-content/50">No previous visitor</p>
           )}
 
           
