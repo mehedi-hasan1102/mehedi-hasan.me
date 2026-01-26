@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import clientPromise from "@/lib/mongodb";
 
 interface LastVisitorData {
   city: string;
@@ -10,57 +9,23 @@ interface LastVisitorData {
   timestamp: string;
 }
 
-const DATA_FILE = path.join(process.cwd(), "data", "last-visitor.json");
+export const dynamic = "force-dynamic";
 
-/**
- * Ensures data directory exists
- */
-const ensureDataDir = () => {
-  const dir = path.dirname(DATA_FILE);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-};
-
-/**
- * Read last visitor from JSON file
- */
-const readLastVisitor = (): LastVisitorData | null => {
-  try {
-    ensureDataDir();
-    if (!fs.existsSync(DATA_FILE)) {
-      return null;
-    }
-    const data = fs.readFileSync(DATA_FILE, "utf-8");
-    return JSON.parse(data) as LastVisitorData;
-  } catch (error) {
-    console.error("Error reading last visitor:", error);
-    return null;
-  }
-};
-
-/**
- * Write last visitor to JSON file
- */
-const writeLastVisitor = (data: LastVisitorData): boolean => {
-  try {
-    ensureDataDir();
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), "utf-8");
-    return true;
-  } catch (error) {
-    console.error("Error writing last visitor:", error);
-    return false;
-  }
-};
+const COLLECTION = "visitor_locations";
+const DB_NAME = process.env.MONGODB_DB || "portfolio";
 
 /**
  * GET /api/last-visitor
- * Returns the last visitor location from the JSON file
+ * Returns the most recent visitor location from MongoDB
  */
 export async function GET() {
   try {
-    const lastVisitor = readLastVisitor();
-    
+    const client = await clientPromise;
+    const db = client.db(DB_NAME);
+    const collection = db.collection<LastVisitorData>(COLLECTION);
+
+    const lastVisitor = await collection.findOne({}, { sort: { timestamp: -1 } });
+
     if (!lastVisitor) {
       return NextResponse.json(
         { data: null, message: "No previous visitor" },
@@ -83,7 +48,7 @@ export async function GET() {
 
 /**
  * POST /api/last-visitor
- * Updates the last visitor location in the JSON file
+ * Inserts the current visitor location into MongoDB
  */
 export async function POST(request: NextRequest) {
   try {
@@ -106,14 +71,11 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     };
 
-    const success = writeLastVisitor(lastVisitorData);
+    const client = await clientPromise;
+    const db = client.db(DB_NAME);
+    const collection = db.collection<LastVisitorData>(COLLECTION);
 
-    if (!success) {
-      return NextResponse.json(
-        { error: "Failed to save visitor data" },
-        { status: 500 }
-      );
-    }
+    await collection.insertOne(lastVisitorData);
 
     return NextResponse.json(
       { data: lastVisitorData, message: "Last visitor updated" },

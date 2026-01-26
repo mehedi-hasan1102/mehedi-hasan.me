@@ -5,47 +5,19 @@ A modern, responsive personal website built with Next.js (App Router) and TypeSc
 The portfolio also includes a lightweight demo authentication context for protected routes and experimental features.
 
 **🚀 Features**
-
-Modern Tech Stack: Next.js App Router + TypeScript for a type-safe, maintainable codebase
-
-Beautiful UI: TailwindCSS with custom CSS variables for theming
-
-Motion Animations: Smooth UI transitions powered by Framer Motion
-
-Dynamic Projects Section: Displays my real-world MERN and frontend projects
-
-Blog Listing: Centralized blog section rendered from local content or MDX
-
-GitHub Contribution Calendar: Visual representation of my coding activity
-
-Theme Switcher: dark / light theme toggle using next-themes
-
-Responsive Layout: Fully optimized for all devices
-
-Demo Auth Context: Lightweight context to simulate authentication
+- Next.js App Router + TypeScript
+- Tailwind CSS with custom CSS vars and next-themes
+- Optimized LCP: hero image prioritized + `fetchPriority="high"`
+- Blog + MDX content with refined typography
+- Global “Last Visitor” footer: server-side location lookup + MongoDB storage
+- GitHub activity visualization
+- Responsive, animated UI (Framer Motion)
 
 **🛠️ Tech Stack**
-
-*Frontend:*
-
-Next.js (App Router)
-
-TypeScript
-
-TailwindCSS
-
-next-themes
-
-Framer Motion
-
-Tools & Integrations:
-
-GitHub API (for contribution graph)
-
-Local Markdown / MDX for blogs
-
-Vercel for deployment
-
+- Frontend: Next.js 16, TypeScript, Tailwind CSS, next-themes, Framer Motion
+- Content: Local MDX/JSON
+- Data: MongoDB (last visitor location)
+- Deploy: Vercel
 
 **📁 Project Structure**
 ```/
@@ -60,17 +32,20 @@ Vercel for deployment
 
 **📦 Installation & Setup**
 
-```
+```bash
 git clone https://github.com/mehedi-hasan1102/m-hasan.vercel.app
-cd m-hasan-blogs
+cd mehedi-hasan.vercel.app
 pnpm install
-pnpm run dev
+cp .env.example .env.local   # fill in your values
+pnpm dev
 ```
+
+**Required env vars** (see [.env.example](.env.example))
+- `MONGODB_URI`, `MONGODB_DB`
+- `NEXT_PUBLIC_EMAILJS_*`, contact details, Calendly URL
 
 **🌐 Live Demo**
-
-Hosted on Vercel
-Live Link: www.mehedi-hasan.me
+- Hosted on Vercel → https://www.mehedi-hasan.me
 
 
 
