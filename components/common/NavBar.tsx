@@ -50,36 +50,11 @@ const Navbar: React.FC<{ blogs: BlogMetaData[] }> = ({ blogs }) => {
 
         {/* Desktop Navbar */}
     
-<div className="flex items-center justify-between py-3 backdrop-blur-[2px] bg-base-100/40 border-b border-(--border) px-4 md:px-6">
+<div className="flex items-center justify-between py-3  bg-base-100 border-b border-(--border) px-4 md:px-6">
 
           <Logo />
 
-          {/* Desktop nav */}
-          {/* <ul className="hidden md:flex flex-1 justify-center items-center gap-1 text-sm tracking-wide ">
-            {[
-              { name: "Home", route: "/" },
-              // { name: "About", route: "/about" },
-              { name: "Projects", route: "/projects" },
-              { name: "Blog", route: "/blog" },
-              { name: "Snippets", route: "/snippets" },
-               { name: "Resources", route: "/resources" },
-              // { name: "Contact", route: "/contact" },
-            ].map((item) => (
-              <li key={item.route}>
-                <Link
-                  href={item.route}
-                  className={`relative px-2 py-1 transition-colors duration-200
-                    ${isActive(item.route) ? "text-primary" : "text-base-content/70 hover:text-primary"}
-                  `}
-                >
-                  {item.name}
-                  {isActive(item.route) && (
-                    <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-primary rounded-full" />
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul> */}
+         
 
 {/* underline only active link  */}
 <ul className="hidden md:flex flex-1 justify-center items-center gap-1 text-sm tracking-tight">
