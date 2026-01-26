@@ -115,7 +115,7 @@ export default function FloatingContactBot() {
       {/* FLOATING CHAT BUTTON */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 h-12 w-12 rounded-full bg-base-300 border border-(--border) text-base-content/70 shadow-xl flex items-center justify-center hover:scale-105 active:scale-95 transition cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 h-12 w-12 rounded-full  border border-(--border) text-base-content/70 shadow-xl flex items-center justify-center hover:text-primary hover:border-primary transition cursor-pointer"
         aria-label="Open chat"
       >
         <FiMessageSquare size={20} />
