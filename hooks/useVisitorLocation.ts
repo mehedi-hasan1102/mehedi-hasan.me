@@ -15,49 +15,32 @@ export const useVisitorLocation = () => {
   useEffect(() => {
     const updateLastVisitor = async () => {
       try {
-        // 1. Fetch current visitor's location
-        const fetchWithTimeout = async (url: string, timeoutMs = 2500) => {
-          const controller = new AbortController();
-          const timer = setTimeout(() => controller.abort(), timeoutMs);
-          try {
-            const resp = await fetch(url, { signal: controller.signal });
-            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-            return await resp.json();
-          } finally {
-            clearTimeout(timer);
-          }
-        };
-
+        // Check if online
         if (typeof navigator !== "undefined" && !navigator.onLine) {
           // Offline: fetch from API without updating
           await fetchLastVisitorFromAPI();
           return;
         }
 
-        let currentLocationData: any;
-        try {
-          // Primary provider
-          currentLocationData = await fetchWithTimeout("https://ipapi.co/json/");
-        } catch {
-          // Fallback provider
-          currentLocationData = await fetchWithTimeout("https://ipwho.is/");
-        }
-
-        const currentLocation = {
-          city: currentLocationData.city || "Unknown",
-          region: currentLocationData.region || currentLocationData.state || "Unknown",
-          country: currentLocationData.country_name || currentLocationData.country || "Unknown",
-          countryCode: (currentLocationData.country_code || currentLocationData.country_code)?.toString().toUpperCase() || "",
-        };
-
-        // 2. POST current location to update last visitor
-        await fetch("/api/last-visitor", {
-          method: "POST",
+        // 1. Fetch current visitor's location via backend (no CORS issues)
+        const locationResponse = await fetch("/api/get-location", {
+          method: "GET",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(currentLocation),
-        }).catch((err) => {
-          console.warn("Failed to update last visitor:", err);
         });
+
+        if (locationResponse.ok) {
+          const locationData = await locationResponse.json();
+          const currentLocation = locationData.data;
+
+          // 2. POST current location to update last visitor
+          await fetch("/api/last-visitor", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(currentLocation),
+          }).catch((err) => {
+            console.warn("Failed to update last visitor:", err);
+          });
+        }
 
         // 3. Fetch and display last visitor
         await fetchLastVisitorFromAPI();
