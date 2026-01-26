@@ -45,6 +45,7 @@ export default function DashboardClient() {
   ];
 
   const [repos, setRepos] = useState<Repo[]>([]);
+  const [commits, setCommits] = useState<Commit[]>([]);
   const [languagesData, setLanguagesData] = useState<LanguageData[]>([]);
   const [stats, setStats] = useState({ repos: 0, stars: 0, forks: 0, followers: 0 });
   const [totalVisitors, setTotalVisitors] = useState(0);
@@ -59,6 +60,9 @@ export default function DashboardClient() {
 
   const fetchDashboardData = async () => {
     try {
+      const githubToken = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+      const headers = githubToken ? { Authorization: `Bearer ${githubToken}` } : {};
+
       // Fetch total visitors
       const visitorsRes = await fetch("/api/total-visitors");
       if (visitorsRes.ok) {
@@ -67,17 +71,42 @@ export default function DashboardClient() {
       }
 
       // Fetch GitHub profile
-      const profileRes = await fetch(`https://api.github.com/users/${USERNAME}`);
-      if (!profileRes.ok) throw new Error("Profile fetch failed");
+      const profileRes = await fetch(`https://api.github.com/users/${USERNAME}`, { headers });
+      if (!profileRes.ok) {
+        console.error("Profile fetch status:", profileRes.status, profileRes.statusText);
+        throw new Error(`Profile fetch failed: ${profileRes.status}`);
+      }
       const profile = await profileRes.json();
 
       // Fetch repositories
-      const repoRes = await fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100`);
-      if (!repoRes.ok) throw new Error("Repo fetch failed");
+      const repoRes = await fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`, { headers });
+      if (!repoRes.ok) {
+        console.error("Repo fetch status:", repoRes.status, repoRes.statusText);
+        throw new Error(`Repo fetch failed: ${repoRes.status}`);
+      }
       const repoData: Repo[] = await repoRes.json();
 
       const totalStars = repoData.reduce((sum, r) => sum + r.stargazers_count, 0);
       const totalForks = repoData.reduce((sum, r) => sum + r.forks_count, 0);
+
+      // Get latest repos and fetch their commits
+      const latestRepos = repoData.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()).slice(0, 5);
+      
+      const commitResults = await Promise.all(
+        latestRepos.map(async (repo) => {
+          const res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/commits?per_page=1`, { headers });
+          if (!res.ok) return null;
+          const data = await res.json();
+          if (!Array.isArray(data) || !data[0]) return null;
+          const c = data[0];
+          return {
+            message: c.commit.message,
+            url: c.html_url,
+            date: c.commit.author.date,
+            repo: repo.name,
+          } as Commit;
+        })
+      );
 
       // Process languages
       const langMap: Record<string, number> = {};
@@ -92,7 +121,8 @@ export default function DashboardClient() {
         forks: totalForks,
         followers: profile.followers,
       });
-      setRepos(repoData.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()).slice(0, 5));
+      setRepos(latestRepos);
+      setCommits(commitResults.filter(Boolean) as Commit[]);
     } catch (error) {
       console.error("Dashboard fetch error:", error);
     }
@@ -100,16 +130,26 @@ export default function DashboardClient() {
 
   /* ============= Render ============= */
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now.getTime() - date.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays < 1) return "Today";
+    if (diffDays < 7) return `${diffDays}d ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`;
+    if (diffDays < 365) return `${Math.floor(diffDays / 30)}m ago`;
+    return date.toLocaleDateString();
+  };
+
   return (
     <section className="font-geist text-base-content mx-auto pt-20 max-w-3xl">
       <div className="rounded-lg p-4 backdrop-blur-sm">
-        
         {/* Header */}
         <div className="m-4 mb-6">
           <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">Dashboard</h1>
-          <p className="text-base mt-2 text-base-content/75">
-            Overview of my website and GitHub metrics.
-          </p>
+          <p className="text-base mt-2 text-base-content/75">Overview of my website and GitHub metrics.</p>
         </div>
 
         <div className="h-px bg-(--border) mx-4 mb-10" />
@@ -120,7 +160,7 @@ export default function DashboardClient() {
             <h2 className="text-2xl font-bold text-base-content">Website Data</h2>
             <p className="text-sm text-base-content/60 mt-1">Website visitors and engagement metrics</p>
           </div>
-          
+
           <div className="rounded-lg border border-(--border) bg-base-100/40 backdrop-blur-[2px] p-8 hover:border-(--border)/80 transition-colors">
             <div className="flex items-start justify-between">
               <div>
@@ -149,9 +189,10 @@ export default function DashboardClient() {
           </div>
 
           {/* Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Contributions */}
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            {/* Contributions & Commits Column */}
+            <div className="lg:col-span-2 space-y-8">
+              {/* Contributions */}
               <div className="rounded-lg border border-(--border) bg-base-100/40 backdrop-blur-[2px] p-6 hover:border-(--border)/80 transition-colors">
                 <h3 className="text-base font-semibold mb-4 text-base-content">Contributions</h3>
                 <img
@@ -161,14 +202,45 @@ export default function DashboardClient() {
                   loading="lazy"
                 />
               </div>
+
+              {/* Commit History */}
+              {commits.length > 0 && (
+                <div>
+                  <h3 className="text-base font-semibold mb-4 text-base-content">Commit History</h3>
+                  <div className="space-y-3">
+                    {commits.slice(0, 3).map((commit, idx) => (
+                      <a
+                        key={idx}
+                        href={commit.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-start gap-3 rounded-lg border border-(--border) bg-base-100/40 backdrop-blur-[2px] p-4 hover:border-(--border)/80 transition-colors group"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="px-2 py-0.5 rounded-md text-xs font-semibold bg-primary/10 text-primary">
+                              {commit.repo}
+                            </span>
+                          </div>
+                          <p className="text-sm text-base-content line-clamp-1 group-hover:text-primary transition-colors">
+                            {commit.message.split("\n")[0]}
+                          </p>
+                          <p className="text-xs text-base-content/50 mt-1">{formatDate(commit.date)}</p>
+                        </div>
+                        <div className="text-primary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">↗</div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Languages */}
             {languagesData.length > 0 && (
-              <div>
-                <div className="rounded-lg border border-(--border) bg-base-100/40 backdrop-blur-[2px] p-6 hover:border-(--border)/80 transition-colors">
+              <div className="h-full">
+                <div className="h-full flex flex-col rounded-lg border border-(--border) bg-base-100/40 backdrop-blur-[2px] p-6 hover:border-(--border)/80 transition-colors">
                   <h3 className="text-base font-semibold mb-4 text-base-content">Languages</h3>
-                  <div className="h-48">
+                  <div className="flex-1 min-h-[240px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie data={languagesData} dataKey="value" nameKey="name" outerRadius={65} label={false}>
