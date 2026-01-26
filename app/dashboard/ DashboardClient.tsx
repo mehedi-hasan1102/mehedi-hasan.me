@@ -61,7 +61,7 @@ export default function DashboardClient() {
   const fetchDashboardData = async () => {
     try {
       const githubToken = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
-      const headers = githubToken ? { Authorization: `Bearer ${githubToken}` } : {};
+      const headers: Record<string, string> = githubToken ? { Authorization: `Bearer ${githubToken}` } : {};
 
       // Fetch total visitors
       const visitorsRes = await fetch("/api/total-visitors");
