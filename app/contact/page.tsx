@@ -94,7 +94,7 @@ const ContactMe: React.FC = () => {
       value: (
         <button
           onClick={() => copyToClipboard(CONTACT_EMAIL)}
-          className="inline-flex items-center gap-2 text-sm hover:text-primary transition cursor-pointer"
+          className="inline-flex items-center gap-2 text-sm hover:text-primary transition cursor-copy"
         >
           <span>{CONTACT_EMAIL}</span>
           <span>⧉</span>

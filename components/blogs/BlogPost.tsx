@@ -70,7 +70,7 @@ const BlogPost: React.FC<Props> = ({ blog }) => {
           </pre>
           <button
             onClick={() => handleCopy(codeContent)}
-            className="absolute top-3 right-3 inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded bg-primary text-primary-content opacity-80 hover:opacity-100 transition cursor-pointer"
+            className="absolute top-3 right-3 inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded bg-primary text-primary-content opacity-80 hover:opacity-100 transition cursor-copy"
           >
             {isCopied ? "✓ Copied" : "⧉ Copy"}
           </button>
