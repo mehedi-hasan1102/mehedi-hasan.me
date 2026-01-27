@@ -41,7 +41,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
           alt={memoProject.title}
           fill
           style={{ objectFit: 'cover' }}
-          className="rounded-lg transition-transform duration-300 hover:scale-105"
+          className="rounded-lg transition-transform duration-300 "
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           priority={false}
           placeholder="blur"
